@@ -29,6 +29,12 @@ Elas devem estar nas páginas de serviço ou em outras LPs. Vale conferir lá.
 - **Aviso "não são gratuitos":** antes era uma caixa obrigatória no formulário ("Estou ciente de que os tratamentos não são gratuitos"). Virou um aviso em texto, sem caixa.
 - **Dado de saúde (LGPD):** o campo livre "Motivo da consulta" foi retirado. No lugar, uma lista opcional ("Implante unitário / Prótese protocolo / Ainda não sei") e uma caixa de consentimento para uso de nome, telefone e e-mail, com link para a Política de Privacidade.
 
+## Textos curtos acrescentados no redesenho (neutros, sem benefício)
+
+Rótulos acima dos títulos ("Implantodontia", "Indicações", "Quem vai cuidar de você", "Atendimento", "Passo a passo", "Agendamento",
+"Ficou com alguma dúvida?", "Ortodontia e mais", "Onde estamos"), a nota "Atendimento particular" abaixo dos botões e "Deslize para ver mais".
+Não fazem promessa nem descrevem resultado; mesmo assim, vale o revisor ver junto.
+
 ## Pendente de decisão do revisor ou da clínica
 
 - Horário de atendimento (H01): hoje a página mostra "[confirmar com a clínica]".

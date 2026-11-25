@@ -8,7 +8,13 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
 
 ## Como o projeto funciona
 
-- HTML, CSS e JS puros, sem framework. Fonte única: Montserrat (400, 600, 700), hospedada em `fonts/`.
+- HTML, CSS e JS puros, sem framework. Fontes hospedadas em `fonts/` (definidas pela Rayana):
+  - títulos principais (H1, H2, citação): **Gangitem** (paga, 177Studio). Enquanto `fonts/gangitem.woff2` não existir, o `build.py` usa Playfair Display (gratuita) no lugar;
+  - texto corrido: Montserrat 400; destaque no texto (`<strong>`): Montserrat 700 itálico; títulos secundários (H3, chamadas acima dos títulos): Montserrat 800 itálico; botões e rótulos: Montserrat 700.
+- Layout de referência: vitaprimeodonto.com.br/implantes (estrutura e ritmo das seções), com a identidade da Dra. Não copiar textos, fotos nem marca de lá.
+- Cores: creme `#FFF5EC`, vinho `#753E3E`, destaque `#C67D74`. O `#C67D74` tem contraste baixo para texto (2,96:1 no creme), então fica em ícones, linhas e fundos;
+  palavras em destaque usam `--rose-tit` `#B06A61` (títulos), `--rose-txt` `#A35A52` (texto pequeno) e `--rose-claro` `#F0C6BF` (sobre o vinho).
+- Logo: `marca/logo-vinho.png` e `marca/logo-creme.png`, recoloridos a partir do logo branco do site (`1.1.-LOGO-BRANCO.png`).
 - Código-fonte em `src/index.html` e `src/obrigado.html`. Não edite `preview.html` nem `dist/` à mão.
 - `python3 build.py` gera `preview.html` (arquivo único, imagens do site atual, sem GTM, formulário simulado) e `dist/` (produção).
 - `python3 tools/check.py`: mede o celular (375×812) e o desktop, gera screenshots em `tools/out/`.
@@ -32,9 +38,9 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
 
 ## Metas que o `check.py` mostra e que devem continuar verdadeiras
 
-- No celular 375×812, os botões **WhatsApp** e **Ligar** do topo ficam inteiros na primeira tela (hoje terminam em 730 px; a página antiga tinha o botão a 897 px).
+- No celular 375×812, os botões **WhatsApp** e **Ligar** do topo ficam inteiros na primeira tela (hoje terminam em 497 px; a página antiga tinha o botão a 897 px).
 - Barra fixa de WhatsApp/Ligar só aparece depois que os botões do topo saem da tela.
-- Nenhum erro de JavaScript; apenas Montserrat carregada.
+- Nenhum erro de JavaScript; apenas Montserrat e a fonte dos títulos carregadas.
 
 ## Pendências conhecidas (fazer primeiro)
 
@@ -42,7 +48,8 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
    Quando os originais estiverem em `img-originais/` (nomes esperados em `img-originais/LEIA-ME.txt`), implementar a etapa que
    redimensiona e comprime (webp ou jpg, versões 1x e 2x, `srcset`) para `dist/assets/img/` e aponta o preview para elas.
 2. **Textos aprovados.** Trocar os provisórios (`COMPLIANCE.md`) pelos do arquivo do relatório quando o revisor liberar.
-3. **Dados faltando:** horário, CEP, URLs reais da Política de Privacidade e dos Termos, telefone fixo (se houver), destino do formulário.
-4. **Decisões em aberto** (listadas no `LEIAME.md`): indexar a LP ou não, e-mail opcional, conversão por clique no WhatsApp, banner de cookies.
+3. **Fonte Gangitem:** falta o arquivo licenciado (uso comercial). Converter para woff2 e salvar como `fonts/gangitem.woff2`.
+4. **Dados faltando:** horário, CEP, URLs reais da Política de Privacidade e dos Termos, telefone fixo (se houver), destino do formulário.
+5. **Decisões em aberto** (listadas no `LEIAME.md`): indexar a LP ou não, e-mail opcional, conversão por clique no WhatsApp, banner de cookies.
 
 Para publicar na hospedagem é preciso acesso, que a Rayana ainda não passou. Não tente publicar; entregue `dist/` pronto e descreva os passos do `LEIAME.md`.

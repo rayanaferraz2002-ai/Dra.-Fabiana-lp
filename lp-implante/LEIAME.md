@@ -8,6 +8,7 @@ Reconstrução em código puro (sem WordPress e sem Elementor) da página `/impl
 - `src/index.html` e `src/obrigado.html`: o código-fonte.
 - `build.py`: gera `preview.html` e a pasta `dist/` (`python3 build.py`).
 - `dist/`: o que vai para a hospedagem (`index.html`, `obrigado/index.html`, `fonts/`, `assets/img/`).
+- `marca/`: logo da clínica em vinho e em creme (recolorido a partir do logo branco do site).
 - `COMPLIANCE.md`: frases pendentes de revisão do CFO.
 
 ## O que muda em relação à página atual
@@ -21,23 +22,37 @@ Reconstrução em código puro (sem WordPress e sem Elementor) da página `/impl
 | `/obrigado/` conta como lead mesmo vindo da busca | A conversão só dispara se a pessoa enviou o formulário nesta sessão; `noindex` na página |
 | Formulário sem consentimento, com campo livre de saúde | Consentimento LGPD, sem campo livre, lista opcional de interesse |
 | Sem H1 nem descrição | 1 H1, título, descrição, dados estruturados da clínica (schema Dentist) |
-| 5 fontes, CSS do Elementor | 1 fonte (Montserrat, 3 pesos, hospedada junto), CSS próprio de ~8 KB |
+| 5 fontes, CSS do Elementor | 2 fontes hospedadas junto (Gangitem nos títulos, Montserrat no texto), CSS próprio |
 | Imagens sem descrição | Todas com descrição (alt) |
 | Página de ~14.000 px no celular | ~11.300 px (formulário e perguntas frequentes subiram) |
 
-Ordem das seções: o formulário e as perguntas frequentes vêm antes de "Outros tratamentos".
+## Visual (novembro de 2026)
+
+Layout inspirado na página de implantes da Vita Prime (estrutura e ritmo), com a identidade da Dra. Fabiana:
+creme `#FFF5EC`, vinho `#753E3E` e destaque `#C67D74`; Gangitem nos títulos e Montserrat no texto; logo do site no topo e no rodapé.
+
+- **Topo:** logo, CRO, título, texto e botões; a foto da Dra. vem logo abaixo dos botões (no desktop, ao lado).
+- **Seções intercaladas** em creme, branco e vinho, com cartões arredondados e ícones em rosé, e um botão de agendamento ao fim das seções principais, com a nota "Atendimento particular".
+- **Ordem:** topo → faixa → frase → Tratamentos especializados → Indicações → Dra. Fabiana → Como funciona → Etapas → Agende (formulário) → Perguntas frequentes → Outros tratamentos → Contato.
+- **No celular,** "Outros tratamentos" é um carrossel de arrastar para o lado.
+- **Botão de WhatsApp em vinho** (antes era verde), como na referência, que usa a cor da marca. Se preferir o verde do WhatsApp, é uma troca de uma linha (`.btn-wa`).
+- **Contraste:** o `#C67D74` não tem contraste suficiente para texto (2,96:1 no creme). Ele aparece em ícones, linhas e fundos; as palavras em destaque usam tons mais escuros do mesmo rosé.
+
+Ordem das seções: o formulário e as perguntas frequentes continuam antes de "Outros tratamentos".
 Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Traumas ou acidentes"), "excelencia", "sorrido" e "Privacidad".
 
 ## O que ainda falta (precisa de você ou da clínica)
 
-1. **Imagens originais.** O preview usa as imagens do site atual. A foto do topo tem só 375×500 px, e fica borrada em tela retina.
+1. **Fonte Gangitem (títulos).** É paga (177Studio, cerca de US$ 16); a versão gratuita só permite uso pessoal, e esta LP é uso comercial.
+   Enquanto o arquivo licenciado não chega, os títulos usam Playfair Display (gratuita, parecida). Ao receber, é só salvar como `fonts/gangitem.woff2` e rodar `python3 build.py`.
+2. **Imagens originais.** O preview usa as imagens do site atual. A foto do topo tem só 375×500 px, e fica borrada em tela retina.
    Mande os originais (foto da Dra., clínica, tratamentos) e eu preparo as versões leves.
-   Hoje a shell do Claude Code não alcança o site da clínica, então eu não consigo baixá-las sozinha.
-2. **Textos aprovados** pelo revisor (ver `COMPLIANCE.md`).
-3. **Horário de atendimento** e **CEP** (entram na página e nos dados estruturados).
-4. **URLs reais** da Política de Privacidade e dos Termos. Hoje estão como `/politica-de-privacidade/` e `/termos-e-condicoes/`, por suposição.
-5. **WhatsApp e telefone.** Usei o WhatsApp Business da clínica (11 94824-6888) para os dois. Confirmar se há um telefone fixo.
-6. **Destino do formulário** (e-mail, planilha ou CRM). Enquanto não houver, o formulário abre o WhatsApp com a mensagem pronta, então nenhum lead se perde.
+   O ambiente do Claude Code já alcança o site da clínica, mas lá só estão as versões reduzidas; os originais precisam vir da clínica.
+3. **Textos aprovados** pelo revisor (ver `COMPLIANCE.md`).
+4. **Horário de atendimento** e **CEP** (entram na página e nos dados estruturados).
+5. **URLs reais** da Política de Privacidade e dos Termos. Hoje estão como `/politica-de-privacidade/` e `/termos-e-condicoes/`, por suposição.
+6. **WhatsApp e telefone.** Usei o WhatsApp Business da clínica (11 94824-6888) para os dois. Confirmar se há um telefone fixo.
+7. **Destino do formulário** (e-mail, planilha ou CRM). Enquanto não houver, o formulário abre o WhatsApp com a mensagem pronta, então nenhum lead se perde.
 
 ## Decisões em aberto
 
@@ -54,7 +69,7 @@ A nova página usa o mesmo contêiner. **Os acionadores do GTM que dependiam do 
 A página envia estes eventos ao `dataLayer` (sem dados pessoais):
 
 - `whatsapp_click` e `phone_click`, com `link_location` (hero, barra_fixa, formulario, contato)
-- `cta_click`
+- `cta_click`, com `link_location` (tratamentos, indicacoes, atendimento, sobre)
 - `form_submit_lead`
 - `lead_confirmado`, só na página de obrigado e só depois de um envio real
 

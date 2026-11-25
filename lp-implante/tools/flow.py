@@ -37,7 +37,7 @@ def main():
         pg = ctx.new_page()
         pg.goto(BASE + "/implantodontia-lp/obrigado/"); pg.wait_for_timeout(300)
         res["1_obrigado_direto_NAO_pode_ter_lead_confirmado"] = ev(pg)
-        pg.wait_for_timeout(2700); res["1_obrigado_direto_NAO_abre_whatsapp"] = len(wa) == 0
+        pg.wait_for_timeout(6500); res["1_obrigado_direto_NAO_abre_whatsapp"] = len(wa) == 0
         res["1_obrigado_noindex"] = pg.evaluate("document.querySelector('meta[name=robots]').content")
         pg.goto(BASE + "/implantodontia-lp/?utm_source=Google+Ads&utm_medium=Pesquisa&utm_campaign=Teste&gclid=ABC123"); pg.wait_for_timeout(300)
         pg.evaluate("document.addEventListener('click',e=>{if(e.target.closest('a[data-wa],a[href^=tel]'))e.preventDefault()},true)")
@@ -52,13 +52,13 @@ def main():
         with pg.expect_navigation(url=BASE + "/implantodontia-lp/obrigado/"):
             pg.click("#form-lead button[type=submit]")
         pg.wait_for_timeout(300); res["5_obrigado_apos_envio_DEVE_ter_lead_confirmado"] = ev(pg)
-        pg.wait_for_timeout(2700)
+        pg.wait_for_timeout(6500)
         from urllib.parse import unquote
         endpoint = (DIST / "index.html").read_text(encoding="utf-8").split("var ENDPOINT='")[1].split("'")[0]
         res["5c_envia_para_planilha"] = ("sem ENDPOINT" if not endpoint else
             any(m == "POST" and '"nome":"Teste"' in body and '"gclid":"ABC123"' in body for m, body in planilha))
         res["5b_abre_whatsapp_com_as_respostas"] = unquote(wa[-1].split("text=")[1]) if wa else "NÃO ABRIU"
-        n = len(wa); pg.goto(BASE + "/implantodontia-lp/obrigado/"); pg.wait_for_timeout(2700)
+        n = len(wa); pg.goto(BASE + "/implantodontia-lp/obrigado/"); pg.wait_for_timeout(6500)
         res["6_voltar_ao_obrigado_NAO_conta_de_novo"] = ev(pg); res["6_nem_abre_whatsapp_de_novo"] = len(wa) == n
         b.close()
     srv.shutdown()

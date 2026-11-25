@@ -49,14 +49,17 @@ small{display:block;margin-top:24px;color:#6B5555}
  try{ok=sessionStorage.getItem('lp_lead')==='1';m=sessionStorage.getItem('lp_wa')||'';sessionStorage.removeItem('lp_lead');sessionStorage.removeItem('lp_wa')}catch(e){}
  if(!ok)return;
  if(!m){dl.push({event:'lead_confirmado'});return}
- // Abre o WhatsApp com as respostas depois que o GTM termina de registrar a conversão (no máximo 2 s).
+ // Abre o WhatsApp com as respostas só depois que o GTM termina de registrar a conversão:
+ // eventCallback dispara quando as tags do lead_confirmado concluem (normalmente 1-2 s); eventTimeout (4 s) conta a partir
+ // de quando o GTM processa o evento. O setTimeout de 6 s é só a rede de segurança para quando o GTM não carrega
+ // (bloqueador de anúncios); ele começa a contar já ao abrir a página, por isso é maior.
  var url=wa(m),gone=false;
  function go(){if(gone)return;gone=true;location.href=url}
  btn.href=url;btn.textContent='Abrir o WhatsApp';
  document.getElementById('txt').textContent='Estamos abrindo o WhatsApp com as suas respostas. É só tocar em enviar para falar com a equipe.';
  document.getElementById('txt2').textContent='Se o WhatsApp não abrir sozinho, toque no botão:';
- dl.push({event:'lead_confirmado',eventCallback:go,eventTimeout:2000});
- setTimeout(go,2500);
+ dl.push({event:'lead_confirmado',eventCallback:go,eventTimeout:4000});
+ setTimeout(go,6000);
 })();
 </script>
 </body>

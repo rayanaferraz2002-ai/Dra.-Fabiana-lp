@@ -32,7 +32,7 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
    (com `link_location`), `form_submit_lead` e `lead_confirmado`. Não mude esses nomes sem avisar, porque o GTM e o Google Ads dependem deles. Nenhum dado pessoal no `dataLayer`.
 5. **`/implantodontia-lp/obrigado/`** (dentro da pasta da LP; o `/obrigado/` do WordPress não é tocado) é `noindex` e só emite `lead_confirmado` se o formulário foi enviado na sessão. `tools/flow.py` verifica isso.
 6. **Não invente dados da clínica** (horário, CEP, telefone fixo, URLs). Onde faltar, deixe `[confirmar com a clínica]` visível e liste no `LEIAME.md`.
-7. **Formulário → WhatsApp.** Depois do envio, a pessoa vai para a página de obrigado, que registra o `lead_confirmado` e então abre o WhatsApp da clínica
+7. **Formulário → WhatsApp.** Depois do envio, a pessoa vai para a página de obrigado, que registra o `lead_confirmado` e, quando o GTM termina as tags (eventCallback; limite de 4 s no GTM e 6 s no total), abre o WhatsApp da clínica
    com as respostas (nome, interesse, e-mail). A mensagem fica só no `sessionStorage`, nunca na URL da página nem no `dataLayer`.
    Com `ENDPOINT` definido (planilha/e-mail), os dados também vão para lá, em paralelo, sem atrasar a pessoa. `tools/flow.py` verifica o fluxo.
 8. **Desempenho e acessibilidade.** Foto do topo sem lazy-load e com `fetchpriority="high"`; todas as imagens com `alt`, `width` e `height`;

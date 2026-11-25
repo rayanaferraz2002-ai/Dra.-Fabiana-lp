@@ -46,13 +46,12 @@ Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Tr
 
 ## O que ainda falta (precisa de você ou da clínica)
 
-1. **Fonte Gangitem (títulos).** É paga (177Studio, cerca de US$ 16); a versão gratuita só permite uso pessoal, e esta LP é uso comercial.
-   Enquanto o arquivo licenciado não chega, os títulos usam Playfair Display (gratuita, parecida). Ao receber, é só salvar como `fonts/gangitem.woff2` e rodar `python3 build.py`.
+1. **Fonte Gangitem (títulos):** resolvido. A clínica tem a licença; o arquivo é o mesmo do site (`Gangitem.ttf`), convertido e reduzido para 50 KB.
 2. **Imagens.** Já estão em `img-originais/` e o build gera as versões leves (1x e 2x) sozinho:
    topo = foto do procedimento do site (`BG_3`, 1500 px); "Quem vai cuidar de você" = `perfil.png` do Drive (1080×1350);
    consultório = 4 fotos do Drive (2048 px). Os cartões de tratamento usam as versões do site (1500 px); se houver originais maiores, é só trocar.
-3. **Textos aprovados** pelo revisor (ver `COMPLIANCE.md`).
-4. **Horário de atendimento** e **CEP** (entram na página e nos dados estruturados).
+3. **Textos:** revisão do CFO concluída em 25/11/2026 (ver `COMPLIANCE.md`).
+4. **Horário de atendimento e CEP:** resolvido (perfil da clínica no Google): seg. a qua. 9h–21h, qui. e sex. 9h–18h, sáb. e dom. fechado; Rua Dr. Roberto Feijó, 535 – Sala 01, CEP 03138-001. Na página e nos dados estruturados.
 5. **URLs da Política de Privacidade e dos Termos:** resolvido. Conferido no rodapé do site: `/privacy-policy/` e `/termos-e-condicoes/`.
 6. **WhatsApp e telefone.** Usei o WhatsApp Business da clínica (11 94824-6888) para os dois. Confirmar se há um telefone fixo.
 7. **Destino do formulário** (planilha do Google + e-mail, via Apps Script). Hoje, depois do envio, a pessoa vai para a página de obrigado

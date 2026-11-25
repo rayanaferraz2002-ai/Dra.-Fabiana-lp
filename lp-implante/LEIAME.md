@@ -53,20 +53,22 @@ Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Tr
    consultório = 4 fotos do Drive (2048 px). Os cartões de tratamento usam as versões do site (1500 px); se houver originais maiores, é só trocar.
 3. **Textos aprovados** pelo revisor (ver `COMPLIANCE.md`).
 4. **Horário de atendimento** e **CEP** (entram na página e nos dados estruturados).
-5. **URLs reais** da Política de Privacidade e dos Termos. Hoje estão como `/politica-de-privacidade/` e `/termos-e-condicoes/`, por suposição.
+5. **URLs da Política de Privacidade e dos Termos:** resolvido. Conferido no rodapé do site: `/privacy-policy/` e `/termos-e-condicoes/`.
 6. **WhatsApp e telefone.** Usei o WhatsApp Business da clínica (11 94824-6888) para os dois. Confirmar se há um telefone fixo.
 7. **Destino do formulário** (planilha do Google + e-mail, via Apps Script). Hoje, depois do envio, a pessoa vai para a página de obrigado
    (que conta a conversão) e o WhatsApp abre com as respostas dela, então nenhum lead se perde; falta só o registro na planilha e o aviso por e-mail.
    Script e roteiro prontos em `integracoes/` (avisos para dra.fabiana.s.orto@gmail.com, planilha na conta do consultório).
    Falta o consultório instalar (`integracoes/COMO-INSTALAR.md`) e mandar o endereço `/exec`, que entra em `FORM_ENDPOINT` no `build.py`.
 
-## Decisões em aberto
+## Decisões tomadas (novembro de 2026)
 
-- **Indexar a LP ou não.** Hoje ela está indexável com canonical próprio (como a atual). O relatório aponta cópias duplicadas no Google (LP e página de serviço). A solução costuma ser: LP com `noindex` e a página de serviço indexada. Depende de existir a página de serviço equivalente.
-- **E-mail opcional ou obrigatório.** Deixei opcional para aumentar o envio. Era obrigatório.
-- **Conversão por clique no WhatsApp.** Antes, o WhatsApp só abria depois do formulário. Agora o clique direto vira evento. Isso muda o que o Google Ads conta como conversão; precisa ser decidido junto com quem cuida da campanha.
-- **Banner de cookies com Consent Mode.** Recomendo, por ser clínica e por LGPD, mas reduz as conversões medidas. Não incluí.
-- **Crédito da agência no rodapé.** Tirei "Designed by Estratega". Colocar o da Raya Criativa é opcional.
+- **Indexar a LP:** sim, indexável com canonical próprio (como a página atual).
+- **E-mail:** opcional no formulário.
+- **Clique no WhatsApp:** conta como **conversão principal** no Google Ads (evento `whatsapp_click`), junto com `lead_confirmado`.
+  Configurar no GTM/Ads. Quem envia o formulário e é levado ao WhatsApp pela página de obrigado não gera `whatsapp_click` (só `lead_confirmado`), então não conta duas vezes.
+- **Banner de cookies:** não por enquanto (reavaliar depois; o mapa do Google também grava cookies).
+- **Página de obrigado:** fica em `/implantodontia-lp/obrigado/`, dentro da pasta da LP. O `/obrigado/` do WordPress continua como está.
+- **Crédito da agência no rodapé:** sem crédito por enquanto.
 
 ## Rastreamento (atenção antes de publicar)
 
@@ -81,9 +83,19 @@ A página envia estes eventos ao `dataLayer` (sem dados pessoais):
 
 Se os 2 IDs do Google Ads são mesmo necessários, ou se um é antigo, é uma conferência a fazer no GTM.
 
-## Como publicar (precisa de acesso à hospedagem)
+## Como publicar (Hostinger, hPanel)
 
-1. Fazer backup da página atual.
-2. Subir `dist/index.html`, `dist/fonts/` e `dist/assets/` para uma pasta `implantodontia-lp/` e `dist/obrigado/index.html` para `obrigado/`. Servidor Apache/LiteSpeed costuma entregar a pasta física antes do WordPress; testar.
-3. Despublicar ou redirecionar as páginas do WordPress com o mesmo endereço, para não haver duplicidade.
-4. Conferir no celular, no Tag Assistant do GTM e no PageSpeed. **Anote a nota do PageSpeed da página atual antes de trocar**, para comparar.
+O site está na Hostinger (hPanel, LiteSpeed, com a CDN/Cloudflare na frente). A LP sobe como uma **pasta física** com o mesmo endereço;
+o servidor entrega a pasta antes do WordPress, sem mexer no WordPress.
+
+Antes: OK do revisor do CFO, horário/CEP, `FORM_ENDPOINT` preenchido, GTM com os acionadores novos publicados, nota do PageSpeed da página atual anotada.
+
+1. `python3 build.py` e conferir com `tools/check.py` e `tools/flow.py`.
+2. hPanel → Arquivos → Gerenciador de Arquivos → `public_html` → criar a pasta `implantodontia-lp`.
+3. Subir **todo o conteúdo de `dist/`** para dentro dela (`index.html`, `obrigado/`, `fonts/`, `assets/`). Dá para subir um .zip e usar "Extrair".
+4. hPanel → Desempenho → CDN → Limpar cache (e o cache do plugin de otimização do WordPress, se houver).
+5. Testar no celular: `drafabianamarques.com/implantodontia-lp/`, WhatsApp, Ligar, formulário (deve ir ao obrigado, abrir o WhatsApp e gravar na planilha).
+6. Tag Assistant do GTM (eventos e `lead_confirmado` só após envio) e PageSpeed.
+7. Com tudo certo, passar para rascunho a página "implantodontia-lp" do WordPress (ela já não aparece, mas evita confusão).
+
+**Desfazer:** renomear ou apagar a pasta `implantodontia-lp` e limpar o cache; a página do WordPress volta na hora.

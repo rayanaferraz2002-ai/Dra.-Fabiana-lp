@@ -33,7 +33,7 @@ def main():
             r.abort()
         ctx.route("**/*", route)
         pg = ctx.new_page()
-        pg.goto(BASE + "/obrigado/"); pg.wait_for_timeout(300)
+        pg.goto(BASE + "/implantodontia-lp/obrigado/"); pg.wait_for_timeout(300)
         res["1_obrigado_direto_NAO_pode_ter_lead_confirmado"] = ev(pg)
         pg.wait_for_timeout(2700); res["1_obrigado_direto_NAO_abre_whatsapp"] = len(wa) == 0
         res["1_obrigado_noindex"] = pg.evaluate("document.querySelector('meta[name=robots]').content")
@@ -47,13 +47,13 @@ def main():
         pg.click("#form-lead button[type=submit]"); res["3_sem_consentimento"] = pg.inner_text("#f-status")
         res["4_utms_no_formulario"] = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#form-lead input[type=hidden]')].map(i=>[i.name,i.value]))")
         pg.evaluate("window.open=function(){return null}"); pg.check("#f-ok")
-        with pg.expect_navigation(url=BASE + "/obrigado/"):
+        with pg.expect_navigation(url=BASE + "/implantodontia-lp/obrigado/"):
             pg.click("#form-lead button[type=submit]")
         pg.wait_for_timeout(300); res["5_obrigado_apos_envio_DEVE_ter_lead_confirmado"] = ev(pg)
         pg.wait_for_timeout(2700)
         from urllib.parse import unquote
         res["5b_abre_whatsapp_com_as_respostas"] = unquote(wa[-1].split("text=")[1]) if wa else "NÃO ABRIU"
-        n = len(wa); pg.goto(BASE + "/obrigado/"); pg.wait_for_timeout(2700)
+        n = len(wa); pg.goto(BASE + "/implantodontia-lp/obrigado/"); pg.wait_for_timeout(2700)
         res["6_voltar_ao_obrigado_NAO_conta_de_novo"] = ev(pg); res["6_nem_abre_whatsapp_de_novo"] = len(wa) == n
         b.close()
     srv.shutdown()

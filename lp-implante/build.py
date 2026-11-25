@@ -123,9 +123,9 @@ def render(tpl: str, *, preview: bool, fontprefix: str, only_fonts=None) -> str:
     s = s.replace("{{PREVIEW}}", "true" if preview else "false")
     s = s.replace("{{ENDPOINT}}", "" if preview else FORM_ENDPOINT)
     s = s.replace("{{CANONICAL}}", SITE + "/implantodontia-lp/")
-    s = s.replace("{{URL_OBRIGADO}}", "/obrigado/")
-    s = s.replace("{{URL_PRIVACIDADE}}", SITE + "/politica-de-privacidade/")   # CONFIRMAR a URL real
-    s = s.replace("{{URL_TERMOS}}", SITE + "/termos-e-condicoes/")             # CONFIRMAR a URL real
+    s = s.replace("{{URL_OBRIGADO}}", "/implantodontia-lp/obrigado/")   # dentro da pasta da LP: não mexe no /obrigado/ do WordPress
+    s = s.replace("{{URL_PRIVACIDADE}}", SITE + "/privacy-policy/")     # conferido no rodapé do site (nov/2026)
+    s = s.replace("{{URL_TERMOS}}", SITE + "/termos-e-condicoes/")      # conferido no rodapé do site (nov/2026)
     for k, (live, base, widths, sizes) in IMG.items():
         v = variants(base, widths)
         if preview:

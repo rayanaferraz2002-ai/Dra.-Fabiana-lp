@@ -30,9 +30,9 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
 3. **Dado de saúde (LGPD).** Sem campo livre de "motivo da consulta". O formulário tem consentimento obrigatório, e-mail opcional e lista de interesse opcional.
 4. **Rastreamento.** GTM `GTM-KHCNXTJ3` só em `dist/` (o preview nunca dispara nada). Eventos do `dataLayer`: `whatsapp_click`, `phone_click`, `cta_click`
    (com `link_location`), `form_submit_lead` e `lead_confirmado`. Não mude esses nomes sem avisar, porque o GTM e o Google Ads dependem deles. Nenhum dado pessoal no `dataLayer`.
-5. **`/obrigado/`** é `noindex` e só emite `lead_confirmado` se o formulário foi enviado na sessão. `tools/flow.py` verifica isso.
+5. **`/implantodontia-lp/obrigado/`** (dentro da pasta da LP; o `/obrigado/` do WordPress não é tocado) é `noindex` e só emite `lead_confirmado` se o formulário foi enviado na sessão. `tools/flow.py` verifica isso.
 6. **Não invente dados da clínica** (horário, CEP, telefone fixo, URLs). Onde faltar, deixe `[confirmar com a clínica]` visível e liste no `LEIAME.md`.
-7. **Formulário → WhatsApp.** Depois do envio, a pessoa vai para `/obrigado/`, que registra o `lead_confirmado` e então abre o WhatsApp da clínica
+7. **Formulário → WhatsApp.** Depois do envio, a pessoa vai para a página de obrigado, que registra o `lead_confirmado` e então abre o WhatsApp da clínica
    com as respostas (nome, interesse, e-mail). A mensagem fica só no `sessionStorage`, nunca na URL da página nem no `dataLayer`.
    Com `ENDPOINT` definido (planilha/e-mail), os dados também vão para lá, em paralelo, sem atrasar a pessoa. `tools/flow.py` verifica o fluxo.
 8. **Desempenho e acessibilidade.** Foto do topo sem lazy-load e com `fetchpriority="high"`; todas as imagens com `alt`, `width` e `height`;
@@ -51,7 +51,8 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
    Para trocar uma foto, substitua o arquivo em `img-originais/` e rode o build. Os 6 cartões de tratamento ainda usam as versões do site (1500 px).
 2. **Textos aprovados.** Trocar os provisórios (`COMPLIANCE.md`) pelos do arquivo do relatório quando o revisor liberar.
 3. **Fonte Gangitem:** falta o arquivo licenciado (uso comercial). Converter para woff2 e salvar como `fonts/gangitem.woff2`.
-4. **Dados faltando:** horário, CEP, URLs reais da Política de Privacidade e dos Termos, telefone fixo (se houver), destino do formulário.
-5. **Decisões em aberto** (listadas no `LEIAME.md`): indexar a LP ou não, e-mail opcional, conversão por clique no WhatsApp, banner de cookies.
+4. **Dados faltando:** horário, CEP, telefone fixo (se houver) e o endereço `/exec` do script de leads (`FORM_ENDPOINT` no `build.py`).
+   Links conferidos no site: Política de Privacidade `/privacy-policy/` e Termos `/termos-e-condicoes/`.
+5. **Decisões tomadas** (nov/2026, ver `LEIAME.md`): LP indexável; e-mail opcional; clique no WhatsApp como conversão principal; sem banner de cookies por enquanto.
 
 Para publicar na hospedagem é preciso acesso, que a Rayana ainda não passou. Não tente publicar; entregue `dist/` pronto e descreva os passos do `LEIAME.md`.

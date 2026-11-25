@@ -31,7 +31,8 @@ Reconstrução em código puro (sem WordPress e sem Elementor) da página `/impl
 Layout inspirado na página de implantes da Vita Prime (estrutura e ritmo), com a identidade da Dra. Fabiana:
 creme `#FFF5EC`, vinho `#753E3E` e destaque `#C67D74`; Gangitem nos títulos e Montserrat no texto; logo do site no topo e no rodapé.
 
-- **Topo:** logo, CRO, título, texto e botões; a foto da Dra. vem logo abaixo dos botões (no desktop, ao lado).
+- **Topo:** logo, CRO, título, texto e botões; a foto da Dra. vem logo abaixo dos botões (no desktop, ao lado), sem divisão reta: ela se dissolve no fundo creme num degradê esfumaçado.
+- **"Quem vai cuidar de você":** foto cheia, sem moldura, com o mesmo degradê (no desktop, ocupa a metade esquerda e se dissolve no texto).
 - **Seções intercaladas** em creme, branco e vinho, com cartões arredondados e ícones em rosé, e um botão de agendamento ao fim das seções principais, com a nota "Atendimento particular".
 - **Ordem:** topo → faixa → frase → Tratamentos especializados → Indicações → Dra. Fabiana → Como funciona → Etapas → Agende (formulário) → Perguntas frequentes → Outros tratamentos → Contato.
 - **No celular,** "Outros tratamentos" é um carrossel de arrastar para o lado.

@@ -82,8 +82,8 @@ p{margin:0 0 1rem}
 .txtlink{display:inline-block;margin-top:16px;font-weight:700;font-size:.95rem}
 
 /* topo */
-.hero{background:var(--creme)}
-.hero-copy{padding:20px 20px 30px;text-align:center}
+.hero{background:var(--creme);position:relative;overflow:hidden}
+.hero-copy{position:relative;z-index:1;padding:20px 20px 0;text-align:center}
 .logo{display:block;width:172px;height:auto;margin:0 auto 20px}
 .kicker{font:700 .74rem/1.4 var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--rose-txt);margin:0 0 .6rem}
 .hero h1{font-size:2.95rem;line-height:1.02}
@@ -91,7 +91,9 @@ p{margin:0 0 1rem}
 .hero .sub{margin:1rem auto 1.4rem;font-size:1.02rem;max-width:520px}
 .addr{margin:16px 0 0;font-size:.9rem;color:var(--suave)}
 .addr .ic{display:inline-block;width:17px;height:17px;margin:0 6px -3px 0;color:var(--rose)}
-.hero-photo{position:relative;background:#e8dcd3;aspect-ratio:4/5;max-height:480px;width:100%;overflow:hidden}
+/* degradê esfumaçado: a máscara deixa a foto transparente nas bordas e o creme do fundo aparece */
+.fade-b{-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.18) 10%,rgba(0,0,0,.55) 22%,#000 40%);mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.18) 10%,rgba(0,0,0,.55) 22%,#000 40%)}
+.hero-photo{position:relative;aspect-ratio:4/5;max-height:500px;width:100%;margin-top:-36px;overflow:hidden}
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
 
 /* faixa */
@@ -136,9 +138,12 @@ p{margin:0 0 1rem}
 
 /* sobre */
 .about{display:grid;gap:34px;align-items:center}
-.about-photo{position:relative;max-width:400px;margin:0 auto 0 0;padding:0 14px 14px 0}
-.about-photo:before{content:"";position:absolute;inset:14px 0 0 14px;border-radius:var(--r);background:var(--rose)}
-.about-photo img{position:relative;border-radius:var(--r);width:100%;aspect-ratio:3/4;object-fit:cover;background:#e8dcd3}
+.sec.about-sec{position:relative;overflow:hidden;padding-top:0}
+.about>div:last-child{position:relative;z-index:1}
+.about-photo{margin:0 -20px -70px}
+.about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;
+ -webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.5) 7%,#000 16%,#000 52%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%);
+ mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.5) 7%,#000 16%,#000 52%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%)}
 .about .head{text-align:left;margin:0 0 18px}
 .diffs{display:grid;gap:16px;margin:22px 0 0}
 .diffs .card{padding:18px;display:grid;grid-template-columns:48px 1fr;gap:0 14px;align-items:start}
@@ -209,12 +214,13 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
 @media (min-width:900px){
  .sec{padding:92px 0}
  h2{font-size:2.9rem}
- .hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;min-height:660px}
- .hero-copy{order:1;padding:56px 56px 64px max(24px,calc((100vw - var(--max))/2 + 20px));align-self:center;text-align:left}
+ .hero{display:flex;align-items:center;min-height:680px}
+ .hero-copy{width:56%;padding:56px 24px 64px max(24px,calc((100vw - var(--max))/2 + 20px));text-align:left}
  .hero .logo{margin:0 0 34px;width:210px}
  .hero .sub{margin-left:0}
- .hero-photo{order:2;aspect-ratio:auto;max-height:none;height:100%;min-height:660px}
+ .hero-photo{position:absolute;top:0;right:0;bottom:0;width:60%;margin:0;aspect-ratio:auto;max-height:none}
  .hero-photo img{object-position:50% 18%}
+ .hero-photo .fade-b{-webkit-mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.2) 12%,rgba(0,0,0,.6) 26%,#000 46%);mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.2) 12%,rgba(0,0,0,.6) 26%,#000 46%)}
  .hero h1{font-size:4.1rem}
  .hero h1 .loc{font-size:1.2rem}
  .cta-row{grid-template-columns:auto auto;justify-content:start}
@@ -226,7 +232,16 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
  .grid.c2{grid-template-columns:1fr 1fr;gap:26px}
  .grid.c4{grid-template-columns:repeat(4,1fr)}
  .checks{grid-template-columns:1fr 1fr 1fr;max-width:var(--max);margin-left:auto;margin-right:auto}
- .about{grid-template-columns:400px 1fr;gap:64px}
+ .sec.about-sec{padding-top:92px}
+ .about{grid-template-columns:1fr 1fr;gap:64px;min-height:640px}
+ .about>div:last-child{grid-column:2}
+ .about-photo{position:absolute;top:0;bottom:0;left:0;width:50%;margin:0}
+ .about-photo img{height:100%;aspect-ratio:auto;object-position:50% 25%;
+  /* esfuma à direita (para o texto) e de leve em cima e embaixo (para as seções vizinhas) */
+  -webkit-mask-image:linear-gradient(to right,#000 0,#000 50%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 84%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,#000 0,#000 50%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 84%,transparent 100%);
+  mask-composite:intersect}
  .diffs{grid-template-columns:1fr 1fr}
  .diffs .card{display:block;padding:22px}
  .diffs .card .badge{margin-bottom:16px}
@@ -277,7 +292,7 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
   <p class="addr"><svg class="ic"><use href="#i-pin"/></svg><span>Rua Dr. Roberto Feijó, 535 · Vila Prudente, São Paulo</span></p>
  </div>
  <div class="hero-photo">
-  <img src="/implantodontia-lp/assets/img/dra-fabiana-topo.jpg" width="375" height="500" alt="Dra. Fabiana Marques, cirurgiã-dentista" fetchpriority="high" decoding="async">
+  <img class="fade-b" src="/implantodontia-lp/assets/img/dra-fabiana-topo.jpg" width="375" height="500" alt="Dra. Fabiana Marques, cirurgiã-dentista" fetchpriority="high" decoding="async">
  </div>
 </header>
 
@@ -346,7 +361,7 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
  </div>
 </section>
 
-<section class="sec">
+<section class="sec about-sec">
  <div class="wrap about">
   <div class="about-photo"><img src="/implantodontia-lp/assets/img/clinica.jpg" width="600" height="800" alt="Clínica da Dra. Fabiana Marques" loading="lazy" decoding="async"></div>
   <div>

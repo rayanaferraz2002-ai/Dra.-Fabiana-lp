@@ -1,0 +1,12 @@
+Coloque aqui as imagens ORIGINAIS (maior resolução disponível), com estes nomes:
+
+dra-fabiana-topo.jpg      foto da Dra. Fabiana (topo da página; a atual no site tem só 375x500 px)
+clinica.jpg               imagem da seção "Dra. Fabiana Marques" (hoje BEM-VINDO.png, 600x800)
+implante-unitario.webp    cartão "Implante unitário" (proporção 3:2)
+protese-protocolo.webp    cartão "Prótese protocolo" (3:2)
+orto-fixo.webp            ortodontia com aparelho fixo (3:2)
+orto-alinhadores.webp     ortodontia com alinhadores (3:2)
+ortopedia-funcional.webp  ortopedia funcional (3:2)
+bruxismo.webp             bruxismo (3:2)
+
+Pode mandar em outro formato (png, jpg, webp); o build converte. Se o nome mudar, atualize o dicionário IMG em build.py.

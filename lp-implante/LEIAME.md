@@ -55,7 +55,9 @@ Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Tr
 4. **Horário de atendimento** e **CEP** (entram na página e nos dados estruturados).
 5. **URLs reais** da Política de Privacidade e dos Termos. Hoje estão como `/politica-de-privacidade/` e `/termos-e-condicoes/`, por suposição.
 6. **WhatsApp e telefone.** Usei o WhatsApp Business da clínica (11 94824-6888) para os dois. Confirmar se há um telefone fixo.
-7. **Destino do formulário** (e-mail, planilha ou CRM). Enquanto não houver, o formulário abre o WhatsApp com a mensagem pronta, então nenhum lead se perde.
+7. **Destino do formulário** (planilha do Google + e-mail, via Apps Script). Hoje, depois do envio, a pessoa vai para a página de obrigado
+   (que conta a conversão) e o WhatsApp abre com as respostas dela, então nenhum lead se perde; falta só o registro na planilha e o aviso por e-mail.
+   Precisa: o e-mail que recebe os avisos e a conta Google dona da planilha.
 
 ## Decisões em aberto
 

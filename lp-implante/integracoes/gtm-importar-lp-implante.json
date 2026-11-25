@@ -1,0 +1,335 @@
+{
+ "exportFormatVersion": 2,
+ "exportTime": "2026-11-25 19:30:00",
+ "containerVersion": {
+  "path": "accounts/0/containers/0/versions/0",
+  "accountId": "0",
+  "containerId": "0",
+  "containerVersionId": "0",
+  "container": {
+   "path": "accounts/0/containers/0",
+   "accountId": "0",
+   "containerId": "0",
+   "name": "LP implante",
+   "publicId": "GTM-KHCNXTJ3",
+   "usageContext": [
+    "WEB"
+   ]
+  },
+  "tag": [
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "tagId": "301",
+    "name": "GA4 - Eventos LP implante",
+    "type": "gaawe",
+    "parameter": [
+     {
+      "type": "BOOLEAN",
+      "key": "sendEcommerceData",
+      "value": "false"
+     },
+     {
+      "type": "TEMPLATE",
+      "key": "eventName",
+      "value": "{{Event}}"
+     },
+     {
+      "type": "TEMPLATE",
+      "key": "measurementIdOverride",
+      "value": "G-ZD1WSSR2J8"
+     },
+     {
+      "type": "LIST",
+      "key": "eventSettingsTable",
+      "list": [
+       {
+        "type": "MAP",
+        "map": [
+         {
+          "type": "TEMPLATE",
+          "key": "parameter",
+          "value": "link_location"
+         },
+         {
+          "type": "TEMPLATE",
+          "key": "parameterValue",
+          "value": "{{DLV - link_location}}"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "firingTriggerId": [
+     "101",
+     "102",
+     "103",
+     "104",
+     "105"
+    ],
+    "tagFiringOption": "ONCE_PER_EVENT"
+   },
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "tagId": "302",
+    "name": "Ads - Conversão LP implante - Formulário",
+    "type": "awct",
+    "paused": true,
+    "parameter": [
+     {
+      "type": "BOOLEAN",
+      "key": "enableNewCustomerReporting",
+      "value": "false"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "enableConversionLinker",
+      "value": "true"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "enableProductReporting",
+      "value": "false"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "enableEnhancedConversion",
+      "value": "false"
+     },
+     {
+      "type": "TEMPLATE",
+      "key": "conversionId",
+      "value": "COLE_O_ID_AQUI"
+     },
+     {
+      "type": "TEMPLATE",
+      "key": "conversionLabel",
+      "value": "COLE_O_ROTULO_AQUI"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "rdp",
+      "value": "false"
+     }
+    ],
+    "firingTriggerId": [
+     "101"
+    ],
+    "tagFiringOption": "ONCE_PER_EVENT"
+   },
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "tagId": "303",
+    "name": "Ads - Conversão LP implante - WhatsApp",
+    "type": "awct",
+    "paused": true,
+    "parameter": [
+     {
+      "type": "BOOLEAN",
+      "key": "enableNewCustomerReporting",
+      "value": "false"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "enableConversionLinker",
+      "value": "true"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "enableProductReporting",
+      "value": "false"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "enableEnhancedConversion",
+      "value": "false"
+     },
+     {
+      "type": "TEMPLATE",
+      "key": "conversionId",
+      "value": "COLE_O_ID_AQUI"
+     },
+     {
+      "type": "TEMPLATE",
+      "key": "conversionLabel",
+      "value": "COLE_O_ROTULO_AQUI"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "rdp",
+      "value": "false"
+     }
+    ],
+    "firingTriggerId": [
+     "102"
+    ],
+    "tagFiringOption": "ONCE_PER_EVENT"
+   }
+  ],
+  "trigger": [
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "triggerId": "101",
+    "name": "CE - lead_confirmado",
+    "type": "CUSTOM_EVENT",
+    "customEventFilter": [
+     {
+      "type": "EQUALS",
+      "parameter": [
+       {
+        "type": "TEMPLATE",
+        "key": "arg0",
+        "value": "{{_event}}"
+       },
+       {
+        "type": "TEMPLATE",
+        "key": "arg1",
+        "value": "lead_confirmado"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "triggerId": "102",
+    "name": "CE - whatsapp_click",
+    "type": "CUSTOM_EVENT",
+    "customEventFilter": [
+     {
+      "type": "EQUALS",
+      "parameter": [
+       {
+        "type": "TEMPLATE",
+        "key": "arg0",
+        "value": "{{_event}}"
+       },
+       {
+        "type": "TEMPLATE",
+        "key": "arg1",
+        "value": "whatsapp_click"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "triggerId": "103",
+    "name": "CE - phone_click",
+    "type": "CUSTOM_EVENT",
+    "customEventFilter": [
+     {
+      "type": "EQUALS",
+      "parameter": [
+       {
+        "type": "TEMPLATE",
+        "key": "arg0",
+        "value": "{{_event}}"
+       },
+       {
+        "type": "TEMPLATE",
+        "key": "arg1",
+        "value": "phone_click"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "triggerId": "104",
+    "name": "CE - cta_click",
+    "type": "CUSTOM_EVENT",
+    "customEventFilter": [
+     {
+      "type": "EQUALS",
+      "parameter": [
+       {
+        "type": "TEMPLATE",
+        "key": "arg0",
+        "value": "{{_event}}"
+       },
+       {
+        "type": "TEMPLATE",
+        "key": "arg1",
+        "value": "cta_click"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "triggerId": "105",
+    "name": "CE - form_submit_lead",
+    "type": "CUSTOM_EVENT",
+    "customEventFilter": [
+     {
+      "type": "EQUALS",
+      "parameter": [
+       {
+        "type": "TEMPLATE",
+        "key": "arg0",
+        "value": "{{_event}}"
+       },
+       {
+        "type": "TEMPLATE",
+        "key": "arg1",
+        "value": "form_submit_lead"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "variable": [
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "variableId": "201",
+    "name": "DLV - link_location",
+    "type": "v",
+    "parameter": [
+     {
+      "type": "INTEGER",
+      "key": "dataLayerVersion",
+      "value": "2"
+     },
+     {
+      "type": "BOOLEAN",
+      "key": "setDefaultValue",
+      "value": "false"
+     },
+     {
+      "type": "TEMPLATE",
+      "key": "name",
+      "value": "link_location"
+     }
+    ]
+   }
+  ],
+  "builtInVariable": [
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "type": "EVENT",
+    "name": "Event"
+   },
+   {
+    "accountId": "0",
+    "containerId": "0",
+    "type": "PAGE_PATH",
+    "name": "Page Path"
+   }
+  ]
+ }
+}

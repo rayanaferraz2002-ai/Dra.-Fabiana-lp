@@ -14,6 +14,12 @@ A página manda estes eventos ao `dataLayer` (sem dados pessoais):
 Decisão (25/11/2026): **`lead_confirmado` e `whatsapp_click` são conversões principais** no Google Ads.
 Quem envia o formulário e é levado ao WhatsApp pela página de obrigado não gera `whatsapp_click`, então não conta duas vezes.
 
+## Atalho: importar
+
+`integracoes/gtm-importar-lp-implante.json` cria de uma vez a variável, os 5 acionadores, a tag do GA4 e as 2 tags de conversão do Google Ads
+(estas **pausadas**, com `COLE_O_ID_AQUI` / `COLE_O_ROTULO_AQUI` para preencher).
+GTM → Administrador → Importar contêiner → escolher o arquivo → espaço de trabalho **Novo** → opção **Mesclar** + **Renomear tags, acionadores e variáveis conflitantes**.
+
 ## Ordem recomendada
 
 1. Montar tudo num **espaço de trabalho novo** do GTM, **sem publicar**.

@@ -14,6 +14,15 @@ A página manda estes eventos ao `dataLayer` (sem dados pessoais):
 Decisão (25/11/2026): **`lead_confirmado` e `whatsapp_click` são conversões principais** no Google Ads.
 Quem envia o formulário e é levado ao WhatsApp pela página de obrigado não gera `whatsapp_click`, então não conta duas vezes.
 
+## Conversões no Google Ads (conta 727-467-5921, criadas/ajustadas em 25/11/2026)
+
+| Ação de conversão | Meta | Tipo | ID | Rótulo | Acionador no GTM |
+|---|---|---|---|---|---|
+| LP Implante - Formulário | Enviar formulários de lead | Principal, contagem Uma | 17925773615 | TKaLCOichpQcEK-y1uNC | CE - lead_confirmado |
+| LP Implante - WhatsApp | Contato | Principal, contagem Uma | 17925773615 | lJfmCKacwb8dEK-y1uNC (1ª letra: conferir l/I no Ads) | CE - whatsapp_click |
+
+A de formulário reaproveitou uma ação antiga (criada em 01/04/2026, sem dados). A conversão antiga "Obrigado" (principal, visita a `/obrigado/`) continua; decidir depois do lançamento se vira secundária.
+
 ## Atalho: importar
 
 `integracoes/gtm-importar-lp-implante.json` cria de uma vez a variável, os 5 acionadores e a tag do GA4.

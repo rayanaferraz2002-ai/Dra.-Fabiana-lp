@@ -609,17 +609,22 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
   var data={nome:nome,celular:tel,email:f.email.value.trim(),interesse:f.interesse.value,consentimento:true,pagina:location.pathname};
   keys.forEach(function(k){data[k]=f[k]?f[k].value:''});
   dl.push({event:'form_submit_lead',link_location:'formulario'});   // sem dados pessoais
-  if(PREVIEW){msg('Prévia: envio simulado. Nada foi enviado.');return}
-  try{sessionStorage.setItem('lp_lead','1')}catch(e){}
-  function done(){location.href=OBRIGADO}
+  // mensagem do WhatsApp com as respostas, para a equipe já começar o atendimento com elas
+  var m='Olá! Meu nome é '+nome+'. Vim pelo site e gostaria de agendar uma avaliação.'
+   +(data.interesse?'\nInteresse: '+data.interesse:'')
+   +(data.email?'\nE-mail: '+data.email:'');
+  if(PREVIEW){msg('Prévia: nada foi enviado. No site publicado, a pessoa vai para a página de obrigado e o WhatsApp abre com: "'+m.replace(/\n/g,' · ')+'"');return}
+  // destino dos dados (planilha/e-mail), em paralelo: não atrasa a pessoa; se falhar, as respostas seguem no WhatsApp
   if(ENDPOINT){
-   msg('Enviando…');
-   fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),keepalive:true}).then(function(r){if(!r.ok)throw 0;done()}).catch(function(){msg('Não foi possível enviar. Fale com a gente pelo WhatsApp.',1)});
-  }else{
-   // sem destino configurado: não perde o lead, abre o WhatsApp com a mensagem pronta
-   var m='Olá! Meu nome é '+nome+'. Vim pelo site e gostaria de agendar uma avaliação'+(data.interesse?' ('+data.interesse.toLowerCase()+')':'')+'.';
-   window.open(waUrl(m),'_blank','noopener');done();
+   var body=JSON.stringify(data);
+   try{if(!(navigator.sendBeacon&&navigator.sendBeacon(ENDPOINT,new Blob([body],{type:'text/plain'}))))throw 0}
+   catch(err){try{fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:body,keepalive:true})}catch(e2){}}
   }
+  // a página de obrigado registra a conversão e depois abre o WhatsApp com a mensagem (guardada só nesta sessão)
+  var saved=false;
+  try{sessionStorage.setItem('lp_lead','1');sessionStorage.setItem('lp_wa',m);saved=true}catch(e){}
+  if(!saved)window.open(waUrl(m),'_blank','noopener');   // navegador sem sessionStorage: abre o WhatsApp já
+  location.href=OBRIGADO;
  });
 })();
 </script>

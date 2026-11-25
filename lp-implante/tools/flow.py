@@ -27,9 +27,11 @@ def main():
     with sync_playwright() as p:
         b = launch(p); ctx = b.new_context(viewport={"width": 375, "height": 812}, is_mobile=True, has_touch=True)
         wa = []   # tentativas de abrir o WhatsApp (bloqueadas no teste, só registradas)
+        planilha = []   # envios ao Apps Script (bloqueados no teste: nenhum lead falso vai para a planilha)
         def route(r):
             if r.request.url.startswith(BASE): return r.continue_()
             if "wa.me/" in r.request.url: wa.append(r.request.url)
+            if "script.google.com/macros/" in r.request.url: planilha.append((r.request.method, r.request.post_data or ""))
             r.abort()
         ctx.route("**/*", route)
         pg = ctx.new_page()
@@ -52,6 +54,9 @@ def main():
         pg.wait_for_timeout(300); res["5_obrigado_apos_envio_DEVE_ter_lead_confirmado"] = ev(pg)
         pg.wait_for_timeout(2700)
         from urllib.parse import unquote
+        endpoint = (DIST / "index.html").read_text(encoding="utf-8").split("var ENDPOINT='")[1].split("'")[0]
+        res["5c_envia_para_planilha"] = ("sem ENDPOINT" if not endpoint else
+            any(m == "POST" and '"nome":"Teste"' in body and '"gclid":"ABC123"' in body for m, body in planilha))
         res["5b_abre_whatsapp_com_as_respostas"] = unquote(wa[-1].split("text=")[1]) if wa else "NÃO ABRIU"
         n = len(wa); pg.goto(BASE + "/implantodontia-lp/obrigado/"); pg.wait_for_timeout(2700)
         res["6_voltar_ao_obrigado_NAO_conta_de_novo"] = ev(pg); res["6_nem_abre_whatsapp_de_novo"] = len(wa) == n

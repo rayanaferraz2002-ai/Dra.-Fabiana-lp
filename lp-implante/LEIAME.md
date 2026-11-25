@@ -54,10 +54,8 @@ Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Tr
 4. **Horário de atendimento e CEP:** resolvido (perfil da clínica no Google): seg. a qua. 9h–21h, qui. e sex. 9h–18h, sáb. e dom. fechado; Rua Dr. Roberto Feijó, 535 – Sala 01, CEP 03138-001. Na página e nos dados estruturados.
 5. **URLs da Política de Privacidade e dos Termos:** resolvido. Conferido no rodapé do site: `/privacy-policy/` e `/termos-e-condicoes/`.
 6. **WhatsApp e telefone.** Usei o WhatsApp Business da clínica (11 94824-6888) para os dois. Confirmar se há um telefone fixo.
-7. **Destino do formulário** (planilha do Google + e-mail, via Apps Script). Hoje, depois do envio, a pessoa vai para a página de obrigado
-   (que conta a conversão) e o WhatsApp abre com as respostas dela, então nenhum lead se perde; falta só o registro na planilha e o aviso por e-mail.
-   Script e roteiro prontos em `integracoes/` (avisos para dra.fabiana.s.orto@gmail.com, planilha na conta do consultório).
-   Falta o consultório instalar (`integracoes/COMO-INSTALAR.md`) e mandar o endereço `/exec`, que entra em `FORM_ENDPOINT` no `build.py`.
+7. **Destino do formulário:** resolvido. Apps Script instalado na conta do consultório; o endereço está em `FORM_ENDPOINT` no `build.py`.
+   Cada envio grava uma linha na planilha "Leads LP Implante" e manda aviso para dra.fabiana.s.orto@gmail.com, e a pessoa segue para o WhatsApp com as respostas.
 
 ## Decisões tomadas (novembro de 2026)
 

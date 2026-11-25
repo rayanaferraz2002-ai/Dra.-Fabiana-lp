@@ -51,7 +51,7 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
    Para trocar uma foto, substitua o arquivo em `img-originais/` e rode o build. Os 6 cartões de tratamento ainda usam as versões do site (1500 px).
 2. **Textos:** revisão do CFO concluída em 25/11/2026 (ver `COMPLIANCE.md`); marcações `data-pendente` retiradas. Texto novo de benefício ou resultado volta a precisar de revisão e de marcação.
 3. **Fonte dos títulos:** decidido, Playfair Display (25/11/2026).
-4. **Dados faltando:** telefone fixo (se houver) e o endereço `/exec` do script de leads (`FORM_ENDPOINT` no `build.py`).
+4. **Dados faltando:** telefone fixo (se houver). O script de leads está instalado (`FORM_ENDPOINT` no `build.py`; `flow.py` confere o envio sem gravar lead de verdade).
    Links conferidos no site: Política de Privacidade `/privacy-policy/` e Termos `/termos-e-condicoes/`.
 5. **Decisões tomadas** (nov/2026, ver `LEIAME.md`): LP indexável; e-mail opcional; clique no WhatsApp como conversão principal; sem banner de cookies por enquanto.
 

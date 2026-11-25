@@ -18,7 +18,7 @@ UP = SITE + "/wp-content/uploads/"
 GTM_ID = "GTM-KHCNXTJ3"
 # Endereço do Apps Script que grava os leads na planilha e avisa por e-mail (ver integracoes/COMO-INSTALAR.md).
 # Vazio: o formulário só leva a pessoa ao WhatsApp com as respostas. O preview nunca envia nada.
-FORM_ENDPOINT = ""
+FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyLmWyEPY_LQ-QkzY85qDGiUazGItY_uo5BLEKJM5YUTsrby_RWQrQynWzSaBy9eUr2/exec"
 
 # chave: (URL atual no site, nome-base do original em img-originais/, larguras geradas, atributo sizes)
 # Se existir img-originais/<nome-base>.(jpg|jpeg|png|webp), o build gera <nome-base>-<largura>.webp em

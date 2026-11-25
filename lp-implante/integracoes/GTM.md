@@ -16,8 +16,8 @@ Quem envia o formulário e é levado ao WhatsApp pela página de obrigado não g
 
 ## Atalho: importar
 
-`integracoes/gtm-importar-lp-implante.json` cria de uma vez a variável, os 5 acionadores, a tag do GA4 e as 2 tags de conversão do Google Ads
-(estas **pausadas**, com `COLE_O_ID_AQUI` / `COLE_O_ROTULO_AQUI` para preencher).
+`integracoes/gtm-importar-lp-implante.json` cria de uma vez a variável, os 5 acionadores e a tag do GA4.
+As 2 tags de conversão do Google Ads são criadas à mão (precisam do ID e do rótulo de cada conversão).
 GTM → Administrador → Importar contêiner → escolher o arquivo → espaço de trabalho **Novo** → opção **Mesclar** + **Renomear tags, acionadores e variáveis conflitantes**.
 
 ## Ordem recomendada

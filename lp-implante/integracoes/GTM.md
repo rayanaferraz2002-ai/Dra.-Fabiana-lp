@@ -71,15 +71,18 @@ Confirme que existe a tag **Vinculador de conversões** em "All Pages".
 **Meta Pixel (opcional)**: tag HTML com `<script>fbq('track','Lead');</script>` no `CE - lead_confirmado`
 (e `fbq('track','Contact')` no `CE - whatsapp_click`), com sequenciamento para disparar depois da tag base do Pixel.
 
-## 4. Conferir os acionadores antigos (importante)
+## 4. Acionadores antigos (revisados em 25/11/2026 com a lista do contêiner)
 
-Eles podem disparar também na LP nova e contar conversão em dobro ou errada:
-- **Visita à página de obrigado**: se a condição for "Page URL **contém** obrigado", ela passa a pegar `/implantodontia-lp/obrigado/`
-  (inclusive visitas diretas, sem envio). Troque para "Page Path **igual a** `/obrigado/`" ou exclua `/implantodontia-lp/`.
-- **Clique em link do WhatsApp** (Click URL contém `wa.me` ou `whatsapp`): também pegaria os botões da LP, duplicando o `whatsapp_click`.
-  Adicione a condição "Page Path **não começa com** `/implantodontia-lp`".
-- **Envio de formulário** genérico (gtm.formSubmit): ligue "Verificar validação" ou exclua `/implantodontia-lp`.
-- Gatilhos de **pop-up do Elementor**: não existem na LP; podem ficar para o resto do site.
+Disparariam na LP e foram ajustados:
+- **Obrigado - Page URL - Contém Obrigado** (Exibição de página; alimenta "02 | Google Ads - Obrigado (Formulario)" = conversão principal "Obrigado",
+  "02 | GA4 - generate_lead" e "02 | Meta Ads - Lead"): + condição **Page Path não começa com `/implantodontia-lp`**.
+- **Todos os Formularios** (Envio de formulário, sem filtro; alimenta os Cookie Creator de nome/e-mail/WhatsApp): passa a "Alguns formulários" com a mesma condição.
+
+Opcional (para GA4 e Meta continuarem recebendo os leads da LP): adicionar **CE - lead_confirmado** em "02 | Meta Ads - Lead" e "02 | GA4 - generate_lead",
+e **CE - whatsapp_click** em "01 | Meta Ads - Contact Whatsapp" e "01 | GA4 - Contact Whatsapp". **Nunca** nas tags antigas do Google Ads (contaria em dobro).
+
+Não disparam na LP (sem ajuste): "Whatsapp Click URL" (Click URL contém api.whatsapp; a LP usa wa.me), "Envio de Form - Preobrigado"
+(Form ID contém preobrigado), "Whatsapp Formulario" (Form ID obrigadotowpp), "Whatsapp JoinChat" e "GHL - Chat Widget Enviado".
 
 ## 5. Testar (Visualizar / Tag Assistant), com a LP publicada
 

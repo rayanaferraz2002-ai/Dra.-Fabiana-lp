@@ -35,7 +35,8 @@ Rótulos acima dos títulos ("Implantodontia", "Indicações", "Quem vai cuidar 
 "Ficou com alguma dúvida?", "Ortodontia e mais", "Onde estamos", "Nossa localização"), o título "Onde fica o consultório?", a nota "Atendimento particular" abaixo dos botões e "Deslize para ver mais".
 Não fazem promessa nem descrevem resultado; mesmo assim, vale o revisor ver junto.
 
-Fotos do consultório (seção de localização): uma mostra a Dra. com uma paciente de costas e outra um procedimento, sem rosto de paciente visível. São as mesmas do site atual; vale o revisor confirmar se podem ficar.
+Foto do topo: a Dra. durante um procedimento (a mesma do site atual), sem rosto de paciente visível. Vale o revisor confirmar se pode ficar no topo de um anúncio.
+Fotos do consultório: só ambientes (recepção, sala de espera, sala de atendimento), sem pacientes.
 
 ## Pendente de decisão do revisor ou da clínica
 

@@ -15,7 +15,7 @@
 <meta property="og:description" content="Avaliação individual para implante dentário e prótese protocolo. Agende pelo WhatsApp.">
 <meta property="og:image" content="{{imgabs:hero}}">
 {{FONT_PRELOAD}}
-<link rel="preload" as="image" href="{{img:hero}}" fetchpriority="high">
+<link rel="preload" as="image" href="{{img:hero}}"{{presrcset:hero}} fetchpriority="high">
 <script>window.dataLayer=window.dataLayer||[];</script>
 {{GTM_HEAD}}
 <style>
@@ -89,7 +89,7 @@ p{margin:0 0 1rem}
 /* degradê esfumaçado: a máscara deixa a foto transparente nas bordas e o creme do fundo aparece */
 .fade-b{-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.18) 10%,rgba(0,0,0,.55) 22%,#000 40%);mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.18) 10%,rgba(0,0,0,.55) 22%,#000 40%)}
 .hero-photo{position:relative;aspect-ratio:4/5;max-height:500px;width:100%;margin-top:-36px;overflow:hidden}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:38% 30%}
 
 /* faixa */
 .trust{background:var(--vinho);color:var(--creme);overflow:hidden}
@@ -147,9 +147,9 @@ p{margin:0 0 1rem}
 
 /* localização e fotos do consultório */
 .loc{display:grid;gap:34px;align-items:center}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-bottom:24px}
-.gallery img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;background:#e8dcd3}
-.gallery img:nth-child(2n){transform:translateY(24px)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:16px;background:#e8dcd3}
+.gallery img:first-child{grid-column:1/-1;aspect-ratio:16/9}
 .addr2{display:flex;gap:14px;align-items:center;margin:6px 0 20px}
 .map{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--sombra);background:#e8dcd3;height:280px}
 .map iframe{display:block;width:100%;height:100%;border:0}
@@ -224,7 +224,7 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
  .hero .logo{margin:0 0 34px;width:210px}
  .hero .sub{margin-left:0}
  .hero-photo{position:absolute;top:0;right:0;bottom:0;width:60%;margin:0;aspect-ratio:auto;max-height:none}
- .hero-photo img{object-position:50% 18%}
+ .hero-photo img{object-position:40% 35%}
  .hero-photo .fade-b{-webkit-mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.2) 12%,rgba(0,0,0,.6) 26%,#000 46%);mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.2) 12%,rgba(0,0,0,.6) 26%,#000 46%)}
  .hero h1{font-size:4.1rem}
  .hero h1 .loc{font-size:1.2rem}
@@ -297,7 +297,7 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
   <p class="addr"><svg class="ic"><use href="#i-pin"/></svg><span>Rua Dr. Roberto Feijó, 535 · Vila Prudente, São Paulo</span></p>
  </div>
  <div class="hero-photo">
-  <img class="fade-b" src="{{img:hero}}" width="375" height="500" alt="Dra. Fabiana Marques, cirurgiã-dentista" fetchpriority="high" decoding="async">
+  <img class="fade-b" src="{{img:hero}}"{{srcset:hero}} width="1500" height="1000" alt="Dra. Fabiana Marques, cirurgiã-dentista, durante um procedimento no consultório" fetchpriority="high" decoding="async">
  </div>
 </header>
 
@@ -329,11 +329,11 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
   </div>
   <div class="grid c2">
    <article class="card treat">
-    <img src="{{img:unitario}}" width="1024" height="683" alt="Implante dentário unitário" loading="lazy" decoding="async">
+    <img src="{{img:unitario}}"{{srcset:unitario}} width="1024" height="683" alt="Implante dentário unitário" loading="lazy" decoding="async">
     <div class="in"><h3>Implante unitário</h3><p data-pendente="C09">Indicado para substituir um dente perdido: uma raiz artificial é instalada no osso e, sobre ela, é colocada uma coroa que imita o dente natural, contribuindo para a mastigação, a estética e o conforto.</p></div>
    </article>
    <article class="card treat">
-    <img src="{{img:protocolo}}" width="1024" height="683" alt="Prótese protocolo sobre implantes" loading="lazy" decoding="async">
+    <img src="{{img:protocolo}}"{{srcset:protocolo}} width="1024" height="683" alt="Prótese protocolo sobre implantes" loading="lazy" decoding="async">
     <div class="in"><h3>Prótese protocolo</h3><p data-pendente="C09">Indicada para quem perdeu todos ou quase todos os dentes: uma prótese fixa é sustentada por implantes, contribuindo para a estabilidade, a mastigação e a estética no dia a dia.</p></div>
    </article>
   </div>
@@ -346,7 +346,7 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
 
 <section class="sec about-sec">
  <div class="wrap about">
-  <div class="about-photo"><img src="{{img:clinica}}" width="600" height="800" alt="Clínica da Dra. Fabiana Marques" loading="lazy" decoding="async"></div>
+  <div class="about-photo"><img src="{{img:clinica}}"{{srcset:clinica}} width="1080" height="1350" alt="Dra. Fabiana Marques, cirurgiã-dentista" loading="lazy" decoding="async"></div>
   <div>
    <div class="head">
     <span class="eyebrow">Quem vai cuidar de você</span>
@@ -370,10 +370,10 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
 <section class="sec creme" id="localizacao">
  <div class="wrap loc">
   <div class="gallery">
-   <img src="{{img:consultorio-1}}" width="1500" height="1000" alt="Dra. Fabiana Marques conversando com uma paciente no consultório" loading="lazy" decoding="async">
-   <img src="{{img:consultorio-2}}" width="1500" height="1000" alt="Dra. Fabiana Marques paramentada no consultório" loading="lazy" decoding="async">
-   <img src="{{img:consultorio-3}}" width="1500" height="1000" alt="Procedimento no consultório da Dra. Fabiana Marques" loading="lazy" decoding="async">
-   <img src="{{img:consultorio-4}}" width="1500" height="1000" alt="Instrumentais usados no consultório" loading="lazy" decoding="async">
+   <img src="{{img:consultorio-1}}"{{srcset:consultorio-1}} width="2048" height="1150" alt="Recepção com o logo da clínica Dra. Fabiana Marques Odontologia" loading="lazy" decoding="async">
+   <img src="{{img:consultorio-2}}"{{srcset:consultorio-2}} width="2048" height="1150" alt="Recepção do consultório" loading="lazy" decoding="async">
+   <img src="{{img:consultorio-3}}"{{srcset:consultorio-3}} width="2048" height="1150" alt="Sala de espera do consultório" loading="lazy" decoding="async">
+   <img src="{{img:consultorio-4}}"{{srcset:consultorio-4}} width="1150" height="2048" alt="Sala de atendimento com cadeira odontológica" loading="lazy" decoding="async">
   </div>
   <div class="loc-text">
    <span class="eyebrow">Nossa localização</span>
@@ -507,10 +507,10 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
    <h2>Outros <span class="ac">tratamentos</span></h2>
   </div>
   <div class="grid c2 carousel" role="region" aria-label="Outros tratamentos (deslize para o lado)" tabindex="0">
-   <article class="card treat"><img src="{{img:orto-fixo}}" width="1024" height="683" alt="Ortodontia com aparelho fixo" loading="lazy" decoding="async"><div class="in"><h3>Ortodontia com aparelho fixo (metálico ou estético)</h3><p data-pendente="C02">Indicada para alinhar os dentes e corrigir problemas de mordida. Pode ser metálico ou estético, contribuindo para a função mastigatória, a saúde bucal e a estética do sorriso.</p></div></article>
-   <article class="card treat"><img src="{{img:orto-alinhadores}}" width="1024" height="683" alt="Ortodontia com alinhadores transparentes" loading="lazy" decoding="async"><div class="in"><h3>Ortodontia com alinhadores (Invisalign)</h3><p data-pendente="C05">Utiliza placas transparentes e removíveis para alinhar os dentes de forma discreta e confortável. O tratamento é planejado digitalmente, o que permite acompanhar as etapas, facilita a higiene e traz mais liberdade no dia a dia.</p></div></article>
-   <article class="card treat"><img src="{{img:ortopedia}}" width="1024" height="683" alt="Ortopedia funcional infantil" loading="lazy" decoding="async"><div class="in"><h3>Ortopedia funcional (aparelhos ortopédicos infantis)</h3><p>Utiliza aparelhos ortopédicos infantis para guiar o crescimento dos ossos da face e da mandíbula. Indicada na infância, pode ajudar a prevenir problemas futuros de mordida, respiração e fala, promovendo um desenvolvimento bucal mais saudável.</p></div></article>
-   <article class="card treat"><img src="{{img:bruxismo}}" width="1024" height="683" alt="Tratamento de bruxismo" loading="lazy" decoding="async"><div class="in"><h3>Tratamento de bruxismo relacionado à oclusão</h3><p>Busca corrigir o contato inadequado entre os dentes, que pode causar ranger, dores musculares e desgaste dental. A abordagem inclui ajustes, placas e acompanhamento para aliviar sintomas e proteger os dentes.</p></div></article>
+   <article class="card treat"><img src="{{img:orto-fixo}}"{{srcset:orto-fixo}} width="1024" height="683" alt="Ortodontia com aparelho fixo" loading="lazy" decoding="async"><div class="in"><h3>Ortodontia com aparelho fixo (metálico ou estético)</h3><p data-pendente="C02">Indicada para alinhar os dentes e corrigir problemas de mordida. Pode ser metálico ou estético, contribuindo para a função mastigatória, a saúde bucal e a estética do sorriso.</p></div></article>
+   <article class="card treat"><img src="{{img:orto-alinhadores}}"{{srcset:orto-alinhadores}} width="1024" height="683" alt="Ortodontia com alinhadores transparentes" loading="lazy" decoding="async"><div class="in"><h3>Ortodontia com alinhadores (Invisalign)</h3><p data-pendente="C05">Utiliza placas transparentes e removíveis para alinhar os dentes de forma discreta e confortável. O tratamento é planejado digitalmente, o que permite acompanhar as etapas, facilita a higiene e traz mais liberdade no dia a dia.</p></div></article>
+   <article class="card treat"><img src="{{img:ortopedia}}"{{srcset:ortopedia}} width="1024" height="683" alt="Ortopedia funcional infantil" loading="lazy" decoding="async"><div class="in"><h3>Ortopedia funcional (aparelhos ortopédicos infantis)</h3><p>Utiliza aparelhos ortopédicos infantis para guiar o crescimento dos ossos da face e da mandíbula. Indicada na infância, pode ajudar a prevenir problemas futuros de mordida, respiração e fala, promovendo um desenvolvimento bucal mais saudável.</p></div></article>
+   <article class="card treat"><img src="{{img:bruxismo}}"{{srcset:bruxismo}} width="1024" height="683" alt="Tratamento de bruxismo" loading="lazy" decoding="async"><div class="in"><h3>Tratamento de bruxismo relacionado à oclusão</h3><p>Busca corrigir o contato inadequado entre os dentes, que pode causar ranger, dores musculares e desgaste dental. A abordagem inclui ajustes, placas e acompanhamento para aliviar sintomas e proteger os dentes.</p></div></article>
   </div>
   <p class="swipe" aria-hidden="true">Deslize para ver mais →</p>
  </div>

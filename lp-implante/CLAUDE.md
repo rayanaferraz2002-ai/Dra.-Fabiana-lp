@@ -44,9 +44,9 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
 
 ## Pendências conhecidas (fazer primeiro)
 
-1. **Imagens originais.** O `build.py` ainda usa as imagens do site atual no preview e só avisa quando faltam arquivos em `img-originais/`.
-   Quando os originais estiverem em `img-originais/` (nomes esperados em `img-originais/LEIA-ME.txt`), implementar a etapa que
-   redimensiona e comprime (webp ou jpg, versões 1x e 2x, `srcset`) para `dist/assets/img/` e aponta o preview para elas.
+1. **Imagens.** Feito: o `build.py` lê `img-originais/<nome>.(jpg|png|webp)` (nomes no dicionário `IMG` e em `img-originais/LEIA-ME.txt`),
+   gera versões webp 1x/2x em `dist/assets/img/` com `srcset`/`sizes` (cache em `.img-cache/`, fora do git) e embute a menor no preview.
+   Para trocar uma foto, substitua o arquivo em `img-originais/` e rode o build. Os 6 cartões de tratamento ainda usam as versões do site (1500 px).
 2. **Textos aprovados.** Trocar os provisórios (`COMPLIANCE.md`) pelos do arquivo do relatório quando o revisor liberar.
 3. **Fonte Gangitem:** falta o arquivo licenciado (uso comercial). Converter para woff2 e salvar como `fonts/gangitem.woff2`.
 4. **Dados faltando:** horário, CEP, URLs reais da Política de Privacidade e dos Termos, telefone fixo (se houver), destino do formulário.

@@ -4,7 +4,8 @@
   python3 build.py            -> cria dist/ (produção) e preview.html (arquivo único)
 
 dist/      : arquivos para publicar (usa imagens locais em dist/assets/img/, GTM ligado)
-preview.html: um arquivo só, para revisar no celular. Imagens vêm do site atual, fontes embutidas,
+preview.html: um arquivo só, para revisar no celular. Imagens: as versões geradas de img-originais/ (embutidas)
+              ou, se faltar o original, a do site atual. Fontes embutidas,
               GTM DESLIGADO (a prévia não dispara nenhuma conversão) e envio do formulário simulado.
 """
 import base64, pathlib, shutil, re
@@ -16,21 +17,58 @@ SITE = "https://drafabianamarques.com"
 UP = SITE + "/wp-content/uploads/"
 GTM_ID = "GTM-KHCNXTJ3"
 
-# chave: (URL atual no site, nome do arquivo local em dist/assets/img/)
+# chave: (URL atual no site, nome-base do original em img-originais/, larguras geradas, atributo sizes)
+# Se existir img-originais/<nome-base>.(jpg|jpeg|png|webp), o build gera <nome-base>-<largura>.webp em
+# dist/assets/img/ (versões 1x e 2x, com srcset) e o preview usa a menor delas embutida.
+# Se não existir, o preview usa a imagem do site atual e o dist aponta para <nome-base>-<1ª largura>.webp (avisa no final).
 IMG = {
-    "hero":                ("2026/01/1.-Foto-Dra.-Fabiana-Marques-.png",            "dra-fabiana-topo.jpg"),
-    "clinica":             ("2026/01/BEM-VINDO.png",                                "clinica.jpg"),
-    "unitario":            ("2026/02/1.-Implante-Unitario--1024x683.webp",          "implante-unitario.webp"),
-    "protocolo":           ("2026/02/1.-Implante-PROTOCOLO--1024x683.webp",         "protese-protocolo.webp"),
-    "orto-fixo":           ("2026/02/2.-Ortodontia-com-aparelho-fixo-1024x683.webp", "orto-fixo.webp"),
-    "orto-alinhadores":    ("2026/02/2.-Ortodontia-com-alinhadores-1024x683.webp",  "orto-alinhadores.webp"),
-    "ortopedia":           ("2026/02/2.-Ortopedia-funcional-1024x683.webp",         "ortopedia-funcional.webp"),
-    "bruxismo":            ("2026/02/2.-Bruxismo-1024x683.webp",                    "bruxismo.webp"),
-    "consultorio-1":       ("2026/01/BG_1.webp",                                    "consultorio-1.webp"),
-    "consultorio-2":       ("2026/01/BG_2.webp",                                    "consultorio-2.webp"),
-    "consultorio-3":       ("2026/01/BG_3.webp",                                    "consultorio-3.webp"),
-    "consultorio-4":       ("2026/01/BG_4.webp",                                    "consultorio-4.webp"),
+    "hero":             ("2026/01/BG_3.webp",                                     "dra-fabiana-topo",    (800, 1500), "(min-width:900px) 1020px, 190vw"),
+    "clinica":          ("2026/01/1.-Foto-Dra.-Fabiana-Marques-.png",             "dra-fabiana-perfil",  (800, 1080), "(min-width:900px) 50vw, 100vw"),
+    "unitario":         ("2026/02/1.-Implante-Unitario--1024x683.webp",           "implante-unitario",   (600, 1024), "(min-width:900px) 530px, 92vw"),
+    "protocolo":        ("2026/02/1.-Implante-PROTOCOLO--1024x683.webp",          "protese-protocolo",   (600, 1024), "(min-width:900px) 530px, 92vw"),
+    "orto-fixo":        ("2026/02/2.-Ortodontia-com-aparelho-fixo-1024x683.webp", "orto-fixo",           (600, 1024), "(min-width:900px) 530px, 80vw"),
+    "orto-alinhadores": ("2026/02/2.-Ortodontia-com-alinhadores-1024x683.webp",   "orto-alinhadores",    (600, 1024), "(min-width:900px) 530px, 80vw"),
+    "ortopedia":        ("2026/02/2.-Ortopedia-funcional-1024x683.webp",          "ortopedia-funcional", (600, 1024), "(min-width:900px) 530px, 80vw"),
+    "bruxismo":         ("2026/02/2.-Bruxismo-1024x683.webp",                     "bruxismo",            (600, 1024), "(min-width:900px) 530px, 80vw"),
+    "consultorio-1":    ("2026/01/BG_1.webp",                                     "consultorio-1",       (600, 1200), "(min-width:900px) 520px, 335px"),   # larga, em cima
+    "consultorio-2":    ("2026/01/BG_2.webp",                                     "consultorio-2",       (600, 1200), "(min-width:900px) 390px, 250px"),
+    "consultorio-3":    ("2026/01/BG_3.webp",                                     "consultorio-3",       (600, 1200), "(min-width:900px) 390px, 250px"),
+    "consultorio-4":    ("2026/01/BG_4.webp",                                     "consultorio-4",       (400, 600),  "(min-width:900px) 170px, 110px"),   # vertical
 }
+ORIG = ROOT / "img-originais"
+CACHE = ROOT / ".img-cache"     # versões geradas (não vai para o git); refeitas quando o original muda
+
+def original(base):
+    for ext in ("jpg", "jpeg", "png", "webp"):
+        f = ORIG / f"{base}.{ext}"
+        if f.exists():
+            return f
+    return None
+
+def variants(base, widths):
+    """Gera (uma vez) as versões webp de um original. Devolve [(largura, arquivo)] ou [] se não houver original."""
+    src = original(base)
+    if not src:
+        return []
+    from PIL import Image, ImageOps
+    CACHE.mkdir(exist_ok=True)
+    out, im = [], None
+    for w in widths:
+        f = CACHE / f"{base}-{w}.webp"
+        if not f.exists() or f.stat().st_mtime < src.stat().st_mtime:
+            if im is None:
+                im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")   # gira pela câmera e descarta EXIF
+            w2 = min(w, im.width)
+            im.resize((w2, round(im.height * w2 / im.width)), Image.LANCZOS).save(f, "WEBP", quality=80, method=6)
+        out.append((w, f))
+    # larguras maiores que o original viram a mesma imagem: remove duplicatas
+    seen, uniq = set(), []
+    for w, f in out:
+        from PIL import Image
+        real = Image.open(f).width
+        if real not in seen:
+            seen.add(real); uniq.append((real, f))
+    return uniq
 
 # Títulos principais: Gangitem (fonte paga, 177Studio). Enquanto o arquivo licenciado não estiver em
 # fonts/gangitem.woff2, o build usa Playfair Display (gratuita, SIL OFL) no lugar. Basta colocar o arquivo.
@@ -84,9 +122,20 @@ def render(tpl: str, *, preview: bool, fontprefix: str, only_fonts=None) -> str:
     s = s.replace("{{URL_OBRIGADO}}", "/obrigado/")
     s = s.replace("{{URL_PRIVACIDADE}}", SITE + "/politica-de-privacidade/")   # CONFIRMAR a URL real
     s = s.replace("{{URL_TERMOS}}", SITE + "/termos-e-condicoes/")             # CONFIRMAR a URL real
-    for k, (live, local) in IMG.items():
-        s = s.replace("{{img:%s}}" % k, (UP + live) if preview else f"{fontprefix}assets/img/{local}")
-        s = s.replace("{{imgabs:%s}}" % k, (UP + live) if preview else f"{SITE}{fontprefix}assets/img/{local}")
+    for k, (live, base, widths, sizes) in IMG.items():
+        v = variants(base, widths)
+        if preview:
+            src = ("data:image/webp;base64," + base64.b64encode(v[0][1].read_bytes()).decode()) if v else UP + live
+            s = s.replace("{{img:%s}}" % k, src).replace("{{imgabs:%s}}" % k, UP + live)
+            s = s.replace("{{srcset:%s}}" % k, "").replace("{{presrcset:%s}}" % k, "")
+            continue
+        url = lambda f: f"{fontprefix}assets/img/{f.name}"
+        files = v or [(widths[0], pathlib.Path(f"{base}-{widths[0]}.webp"))]
+        s = s.replace("{{img:%s}}" % k, url(files[0][1]))
+        s = s.replace("{{imgabs:%s}}" % k, SITE + url(files[-1][1]))
+        ss = ", ".join(f"{url(f)} {w}w" for w, f in files)
+        s = s.replace("{{srcset:%s}}" % k, f' srcset="{ss}" sizes="{sizes}"' if len(files) > 1 else "")
+        s = s.replace("{{presrcset:%s}}" % k, f' imagesrcset="{ss}" imagesizes="{sizes}"' if len(files) > 1 else "")
     left = re.findall(r"\{\{[^}]+\}\}", s)
     assert not left, f"placeholders sem valor: {left}"
     return s
@@ -110,12 +159,15 @@ def main():
     base = "/implantodontia-lp/"
     (DIST / "index.html").write_text(render(index, preview=False, fontprefix=base), encoding="utf-8")
     (DIST / "obrigado" / "index.html").write_text(render(thanks, preview=False, fontprefix=base), encoding="utf-8")
+    for k, (live, base, widths, sizes) in IMG.items():
+        for w, f in variants(base, widths):
+            shutil.copy(f, DIST / "assets" / "img" / f.name)
     print("ok: preview.html e dist/ gerados")
     if not GANGITEM.exists():
         print("aviso: fonts/gangitem.woff2 não encontrado; títulos com Playfair Display (provisória)")
-    missing = [local for _, local in IMG.values() if not (ROOT / "img-originais" / local).exists()]
+    missing = sorted({base for _, base, *_ in IMG.values() if not original(base)})
     if missing:
-        print("faltam as imagens originais em img-originais/:", ", ".join(missing))
+        print("faltam as imagens originais em img-originais/ (o dist/ ainda não tem estas):", ", ".join(missing))
 
 if __name__ == "__main__":
     main()

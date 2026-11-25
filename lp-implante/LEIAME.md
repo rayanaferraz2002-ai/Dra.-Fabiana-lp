@@ -35,7 +35,7 @@ creme `#FFF5EC`, vinho `#753E3E` e destaque `#C67D74`; Gangitem nos títulos e M
 - **"Quem vai cuidar de você":** foto cheia, sem moldura, com o mesmo degradê (no desktop, ocupa a metade esquerda e se dissolve só na divisão com o texto; bordas de cima e de baixo retas).
 - **Seções intercaladas** em creme, branco e vinho, com cartões arredondados e ícones em rosé, e um botão de agendamento ao fim das seções principais, com a nota "Atendimento particular".
 - **Ordem:** topo → faixa → frase → Tratamentos especializados → Dra. Fabiana → Onde fica o consultório → Indicações → Como funciona → Etapas → Agende (formulário) → Perguntas frequentes → Outros tratamentos → Contato.
-- **"Onde fica o consultório?":** 4 fotos do consultório (hoje `BG_1` a `BG_4` do site), endereço e mapa do Google.
+- **"Onde fica o consultório?":** 4 fotos do consultório (Drive da clínica: IMG_1496 em cima, larga, e IMG_1495, IMG_1492 e IMG_1506 embaixo), endereço e mapa do Google.
   O mapa é um `iframe` do Google Maps com `loading="lazy"`: só carrega quando a pessoa chega perto da seção, mas, ao carregar, o Google pode gravar cookies (vale considerar no banner de cookies, ver "Decisões em aberto").
 - **No celular,** "Outros tratamentos" é um carrossel de arrastar para o lado.
 - **Botão de WhatsApp em vinho** (antes era verde), como na referência, que usa a cor da marca. Se preferir o verde do WhatsApp, é uma troca de uma linha (`.btn-wa`).
@@ -48,9 +48,9 @@ Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Tr
 
 1. **Fonte Gangitem (títulos).** É paga (177Studio, cerca de US$ 16); a versão gratuita só permite uso pessoal, e esta LP é uso comercial.
    Enquanto o arquivo licenciado não chega, os títulos usam Playfair Display (gratuita, parecida). Ao receber, é só salvar como `fonts/gangitem.woff2` e rodar `python3 build.py`.
-2. **Imagens originais.** O preview usa as imagens do site atual. A foto do topo tem só 375×500 px, e fica borrada em tela retina.
-   Mande os originais (foto da Dra., clínica, tratamentos) e eu preparo as versões leves.
-   O ambiente do Claude Code já alcança o site da clínica, mas lá só estão as versões reduzidas; os originais precisam vir da clínica.
+2. **Imagens.** Já estão em `img-originais/` e o build gera as versões leves (1x e 2x) sozinho:
+   topo = foto do procedimento do site (`BG_3`, 1500 px); "Quem vai cuidar de você" = `perfil.png` do Drive (1080×1350);
+   consultório = 4 fotos do Drive (2048 px). Os cartões de tratamento usam as versões do site (1500 px); se houver originais maiores, é só trocar.
 3. **Textos aprovados** pelo revisor (ver `COMPLIANCE.md`).
 4. **Horário de atendimento** e **CEP** (entram na página e nos dados estruturados).
 5. **URLs reais** da Política de Privacidade e dos Termos. Hoje estão como `/politica-de-privacidade/` e `/termos-e-condicoes/`, por suposição.

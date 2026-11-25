@@ -1,16 +1,17 @@
-Coloque aqui as imagens ORIGINAIS (maior resolução disponível), com estes nomes:
+Imagens ORIGINAIS da página (maior resolução disponível). O build.py gera as versões leves (webp 1x e 2x) a partir delas.
+Para trocar uma foto: substitua o arquivo mantendo o nome (a extensão pode ser jpg, png ou webp) e rode python3 build.py.
 
-dra-fabiana-topo.jpg      foto da Dra. Fabiana (topo da página; a atual no site tem só 375x500 px)
-clinica.jpg               imagem da seção "Dra. Fabiana Marques" (hoje BEM-VINDO.png, 600x800)
-implante-unitario.webp    cartão "Implante unitário" (proporção 3:2)
-protese-protocolo.webp    cartão "Prótese protocolo" (3:2)
-orto-fixo.webp            ortodontia com aparelho fixo (3:2)
-orto-alinhadores.webp     ortodontia com alinhadores (3:2)
-ortopedia-funcional.webp  ortopedia funcional (3:2)
-bruxismo.webp             bruxismo (3:2)
-consultorio-1.webp        fotos do consultório, seção "Onde fica o consultório?" (hoje BG_1 a BG_4 do site, 1500x1000)
-consultorio-2.webp
-consultorio-3.webp
-consultorio-4.webp
+dra-fabiana-topo          topo da página (hoje: foto do procedimento, BG_3 do site, 1500x1000)
+dra-fabiana-perfil        "Quem vai cuidar de você" (perfil.png do Drive, 1080x1350)
+consultorio-1             "Onde fica o consultório?", foto larga de cima (IMG_1496, placa com o logo)
+consultorio-2             idem, embaixo à esquerda (IMG_1495, recepção)
+consultorio-3             idem, embaixo ao centro (IMG_1492, sala de espera)
+consultorio-4             idem, embaixo à direita (IMG_1506, consultório, vertical)
+implante-unitario         cartão "Implante unitário" (3:2; hoje a versão do site)
+protese-protocolo         cartão "Prótese protocolo" (3:2; idem)
+orto-fixo                 ortodontia com aparelho fixo (3:2; idem)
+orto-alinhadores          ortodontia com alinhadores (3:2; idem)
+ortopedia-funcional       ortopedia funcional (3:2; idem)
+bruxismo                  bruxismo (3:2; idem)
 
-Pode mandar em outro formato (png, jpg, webp); o build converte. Se o nome mudar, atualize o dicionário IMG em build.py.
+Se o nome mudar, atualize o dicionário IMG em build.py.

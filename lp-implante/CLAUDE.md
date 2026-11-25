@@ -38,7 +38,7 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
 
 ## Metas que o `check.py` mostra e que devem continuar verdadeiras
 
-- No celular 375×812, os botões **WhatsApp** e **Ligar** do topo ficam inteiros na primeira tela (hoje terminam em 577 px; a página antiga tinha o botão a 897 px).
+- No celular 375×812, os botões **WhatsApp** e **Ligar** do topo ficam inteiros na primeira tela (hoje terminam em 498 px; a página antiga tinha o botão a 897 px).
 - Barra fixa de WhatsApp/Ligar só aparece depois que os botões do topo saem da tela.
 - Nenhum erro de JavaScript; apenas Montserrat e a fonte dos títulos carregadas.
 

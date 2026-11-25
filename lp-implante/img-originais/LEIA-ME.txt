@@ -8,5 +8,9 @@ orto-fixo.webp            ortodontia com aparelho fixo (3:2)
 orto-alinhadores.webp     ortodontia com alinhadores (3:2)
 ortopedia-funcional.webp  ortopedia funcional (3:2)
 bruxismo.webp             bruxismo (3:2)
+consultorio-1.webp        fotos do consultório, seção "Onde fica o consultório?" (hoje BG_1 a BG_4 do site, 1500x1000)
+consultorio-2.webp
+consultorio-3.webp
+consultorio-4.webp
 
 Pode mandar em outro formato (png, jpg, webp); o build converte. Se o nome mudar, atualize o dicionário IMG em build.py.

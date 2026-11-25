@@ -26,6 +26,10 @@ IMG = {
     "orto-alinhadores":    ("2026/02/2.-Ortodontia-com-alinhadores-1024x683.webp",  "orto-alinhadores.webp"),
     "ortopedia":           ("2026/02/2.-Ortopedia-funcional-1024x683.webp",         "ortopedia-funcional.webp"),
     "bruxismo":            ("2026/02/2.-Bruxismo-1024x683.webp",                    "bruxismo.webp"),
+    "consultorio-1":       ("2026/01/BG_1.webp",                                    "consultorio-1.webp"),
+    "consultorio-2":       ("2026/01/BG_2.webp",                                    "consultorio-2.webp"),
+    "consultorio-3":       ("2026/01/BG_3.webp",                                    "consultorio-3.webp"),
+    "consultorio-4":       ("2026/01/BG_4.webp",                                    "consultorio-4.webp"),
 }
 
 # Títulos principais: Gangitem (fonte paga, 177Studio). Enquanto o arquivo licenciado não estiver em

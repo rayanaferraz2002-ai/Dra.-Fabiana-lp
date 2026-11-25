@@ -32,8 +32,10 @@ Elas devem estar nas páginas de serviço ou em outras LPs. Vale conferir lá.
 ## Textos curtos acrescentados no redesenho (neutros, sem benefício)
 
 Rótulos acima dos títulos ("Implantodontia", "Indicações", "Quem vai cuidar de você", "Atendimento", "Passo a passo", "Agendamento",
-"Ficou com alguma dúvida?", "Ortodontia e mais", "Onde estamos"), a nota "Atendimento particular" abaixo dos botões e "Deslize para ver mais".
+"Ficou com alguma dúvida?", "Ortodontia e mais", "Onde estamos", "Nossa localização"), o título "Onde fica o consultório?", a nota "Atendimento particular" abaixo dos botões e "Deslize para ver mais".
 Não fazem promessa nem descrevem resultado; mesmo assim, vale o revisor ver junto.
+
+Fotos do consultório (seção de localização): uma mostra a Dra. com uma paciente de costas e outra um procedimento, sem rosto de paciente visível. São as mesmas do site atual; vale o revisor confirmar se podem ficar.
 
 ## Pendente de decisão do revisor ou da clínica
 

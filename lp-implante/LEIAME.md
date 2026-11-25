@@ -32,7 +32,7 @@ Layout inspirado na página de implantes da Vita Prime (estrutura e ritmo), com 
 creme `#FFF5EC`, vinho `#753E3E` e destaque `#C67D74`; Gangitem nos títulos e Montserrat no texto; logo do site no topo e no rodapé.
 
 - **Topo:** logo, CRO, título, texto e botões; a foto da Dra. vem logo abaixo dos botões (no desktop, ao lado), sem divisão reta: ela se dissolve no fundo creme num degradê esfumaçado.
-- **"Quem vai cuidar de você":** foto cheia, sem moldura, com o mesmo degradê (no desktop, ocupa a metade esquerda e se dissolve no texto).
+- **"Quem vai cuidar de você":** foto cheia, sem moldura, com o mesmo degradê (no desktop, ocupa a metade esquerda e se dissolve só na divisão com o texto; bordas de cima e de baixo retas).
 - **Seções intercaladas** em creme, branco e vinho, com cartões arredondados e ícones em rosé, e um botão de agendamento ao fim das seções principais, com a nota "Atendimento particular".
 - **Ordem:** topo → faixa → frase → Tratamentos especializados → Dra. Fabiana → Onde fica o consultório → Indicações → Como funciona → Etapas → Agende (formulário) → Perguntas frequentes → Outros tratamentos → Contato.
 - **"Onde fica o consultório?":** 4 fotos do consultório (hoje `BG_1` a `BG_4` do site) com moldura vinho deslocada, endereço e mapa do Google.

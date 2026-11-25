@@ -141,8 +141,8 @@ p{margin:0 0 1rem}
 .about>div:last-child{position:relative;z-index:1}
 .about-photo{margin:0 -20px -70px}
 .about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;
- -webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.5) 7%,#000 16%,#000 52%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%);
- mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.5) 7%,#000 16%,#000 52%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%)}
+ -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 52%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%);
+ mask-image:linear-gradient(to bottom,#000 0,#000 52%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%)}
 .about .head{text-align:left;margin:0 0 18px}
 .diffs{display:grid;gap:16px;margin:22px 0 0}
 .diffs .card{padding:18px;display:grid;grid-template-columns:48px 1fr;gap:0 14px;align-items:start}
@@ -247,11 +247,9 @@ body.rev [data-pendente]:after{content:" [" attr(data-pendente) "]";font:700 .7r
  .about>div:last-child{grid-column:2}
  .about-photo{position:absolute;top:0;bottom:0;left:0;width:50%;margin:0}
  .about-photo img{height:100%;aspect-ratio:auto;object-position:50% 25%;
-  /* esfuma à direita (para o texto) e de leve em cima e embaixo (para as seções vizinhas) */
-  -webkit-mask-image:linear-gradient(to right,#000 0,#000 50%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 84%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:linear-gradient(to right,#000 0,#000 50%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 12%,#000 84%,transparent 100%);
-  mask-composite:intersect}
+  /* esfuma só na divisão com o texto (à direita); bordas de cima e de baixo retas */
+  -webkit-mask-image:linear-gradient(to right,#000 0,#000 50%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%);
+  mask-image:linear-gradient(to right,#000 0,#000 50%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.15) 88%,transparent 100%)}
  .diffs{grid-template-columns:1fr 1fr}
  .diffs .card{display:block;padding:22px}
  .diffs .card .badge{margin-bottom:16px}

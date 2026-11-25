@@ -9,7 +9,7 @@ Nada disso pode ir ao ar sem o OK do revisor de conformidade.
 
 | ID | Onde | Texto original | Provisório na página | Status |
 |---|---|---|---|---|
-| C01 | Topo, texto de apoio | "Recupere definitivamente a funcionalidade e a harmonia do seu sorriso de forma rápida e confortável." | "Avaliação individual para recuperar a mastigação e a segurança ao sorrir." | aguardando revisor |
+| C01 | Topo, texto de apoio | "Recupere definitivamente a funcionalidade e a harmonia do seu sorriso de forma rápida e confortável." | "Se a falta de dentes tem atrapalhado sua mastigação ou deixado você sem jeito de sorrir, o implante pode ser o caminho. Agende uma avaliação e descubra se é indicado para você." (escolhida pela Rayana em nov/2026: fala da dor e apresenta o implante como possibilidade, sem prometer resultado) | aguardando revisor |
 | C02 | Outros tratamentos, aparelho fixo | "…oferecendo eficiência no tratamento e resultados duradouros, melhorando…" | "…contribuindo para a função mastigatória, a saúde bucal e a estética do sorriso." | aguardando revisor |
 | C03 | Como funciona (introdução e etapa 2) | "…oferecer o melhor tratamento" / "…definir o melhor tratamento" | "…indicar o tratamento mais adequado ao seu caso" / "…definir o tratamento mais adequado" | aguardando revisor |
 | C04 | Como funciona, etapa 4 | "Foco em resultados reais e acompanhamento em cada etapa do tratamento" | "Planejamento individual e acompanhamento em cada etapa do tratamento." | aguardando revisor |

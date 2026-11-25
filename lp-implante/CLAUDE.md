@@ -16,7 +16,7 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
   palavras em destaque usam `--rose-tit` `#B06A61` (títulos), `--rose-txt` `#A35A52` (texto pequeno) e `--rose-claro` `#F0C6BF` (sobre o vinho).
 - Logo: `marca/logo-vinho.png` e `marca/logo-creme.png`, recoloridos a partir do logo branco do site (`1.1.-LOGO-BRANCO.png`).
 - Código-fonte em `src/index.html` e `src/obrigado.html`. Não edite `preview.html` nem `dist/` à mão.
-- `python3 build.py` gera `preview.html` (arquivo único, imagens do site atual, sem GTM, formulário simulado) e `dist/` (produção).
+- `python3 build.py` gera `preview.html` (arquivo único, imagens e fontes embutidas, sem GTM, formulário simulado) e `dist/` (produção).
 - `python3 tools/check.py`: mede o celular (375×812) e o desktop, gera screenshots em `tools/out/`.
 - `python3 tools/flow.py`: testa o fluxo de conversão em `dist/`. Se faltar navegador: `pip install playwright && playwright install chromium`.
 - Rode `build.py`, `check.py` e `flow.py` depois de cada mudança e olhe os screenshots antes de dizer que está pronto.
@@ -38,7 +38,7 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
 
 ## Metas que o `check.py` mostra e que devem continuar verdadeiras
 
-- No celular 375×812, os botões **WhatsApp** e **Ligar** do topo ficam inteiros na primeira tela (hoje terminam em 497 px; a página antiga tinha o botão a 897 px).
+- No celular 375×812, os botões **WhatsApp** e **Ligar** do topo ficam inteiros na primeira tela (hoje terminam em 577 px; a página antiga tinha o botão a 897 px).
 - Barra fixa de WhatsApp/Ligar só aparece depois que os botões do topo saem da tela.
 - Nenhum erro de JavaScript; apenas Montserrat e a fonte dos títulos carregadas.
 

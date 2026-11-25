@@ -22,14 +22,14 @@ Reconstrução em código puro (sem WordPress e sem Elementor) da página `/impl
 | `/obrigado/` conta como lead mesmo vindo da busca | A conversão só dispara se a pessoa enviou o formulário nesta sessão; `noindex` na página |
 | Formulário sem consentimento, com campo livre de saúde | Consentimento LGPD, sem campo livre, lista opcional de interesse |
 | Sem H1 nem descrição | 1 H1, título, descrição, dados estruturados da clínica (schema Dentist) |
-| 5 fontes, CSS do Elementor | 2 fontes hospedadas junto (Gangitem nos títulos, Montserrat no texto), CSS próprio |
+| 5 fontes, CSS do Elementor | 2 fontes hospedadas junto (Playfair Display nos títulos, Montserrat no texto), CSS próprio |
 | Imagens sem descrição | Todas com descrição (alt) |
 | Página de ~14.000 px no celular | ~11.300 px (formulário e perguntas frequentes subiram) |
 
 ## Visual (novembro de 2026)
 
 Layout inspirado na página de implantes da Vita Prime (estrutura e ritmo), com a identidade da Dra. Fabiana:
-creme `#FFF5EC`, vinho `#753E3E` e destaque `#C67D74`; Gangitem nos títulos e Montserrat no texto; logo do site no topo e no rodapé.
+creme `#FFF5EC`, vinho `#753E3E` e destaque `#C67D74`; Playfair Display nos títulos e Montserrat no texto; logo do site no topo e no rodapé.
 
 - **Topo:** logo, CRO, título, texto e botões; a foto da Dra. vem logo abaixo dos botões (no desktop, ao lado), sem divisão reta: ela se dissolve no fundo creme num degradê esfumaçado.
 - **"Quem vai cuidar de você":** foto cheia, sem moldura, com o mesmo degradê (no desktop, ocupa a metade esquerda e se dissolve só na divisão com o texto; bordas de cima e de baixo retas).
@@ -46,7 +46,7 @@ Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Tr
 
 ## O que ainda falta (precisa de você ou da clínica)
 
-1. **Fonte Gangitem (títulos):** resolvido. A clínica tem a licença; o arquivo é o mesmo do site (`Gangitem.ttf`), convertido e reduzido para 50 KB.
+1. **Fonte dos títulos:** resolvido. Playfair Display (a Gangitem foi testada, e a Rayana preferiu manter a Playfair).
 2. **Imagens.** Já estão em `img-originais/` e o build gera as versões leves (1x e 2x) sozinho:
    topo = foto do procedimento do site (`BG_3`, 1500 px); "Quem vai cuidar de você" = `perfil.png` do Drive (1080×1350);
    consultório = 4 fotos do Drive (2048 px). Os cartões de tratamento usam as versões do site (1500 px); se houver originais maiores, é só trocar.

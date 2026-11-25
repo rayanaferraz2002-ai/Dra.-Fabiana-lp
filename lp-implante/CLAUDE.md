@@ -9,7 +9,7 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
 ## Como o projeto funciona
 
 - HTML, CSS e JS puros, sem framework. Fontes hospedadas em `fonts/` (definidas pela Rayana):
-  - títulos principais (H1, H2, citação): **Gangitem** (177Studio; a clínica tem licença, confirmada pela Rayana em 25/11/2026). `fonts/gangitem.woff2` é o arquivo do site da clínica reduzido aos caracteres do português. Sem ele, o `build.py` usa Playfair Display;
+  - títulos principais (H1, H2, citação): **Playfair Display** 400 (gratuita, SIL OFL). A Gangitem foi testada em 25/11/2026 e a Rayana preferiu manter a Playfair;
   - texto corrido: Montserrat 400; destaque no texto (`<strong>`): Montserrat 700 itálico; títulos secundários (H3, chamadas acima dos títulos): Montserrat 800 itálico; botões e rótulos: Montserrat 700.
 - Layout de referência: vitaprimeodonto.com.br/implantes (estrutura e ritmo das seções), com a identidade da Dra. Não copiar textos, fotos nem marca de lá.
 - Cores: creme `#FFF5EC`, vinho `#753E3E`, destaque `#C67D74`. O `#C67D74` tem contraste baixo para texto (2,96:1 no creme), então fica em ícones, linhas e fundos;
@@ -50,7 +50,7 @@ Leia também `LEIAME.md` (estado, pendências, como publicar) e `COMPLIANCE.md` 
    gera versões webp 1x/2x em `dist/assets/img/` com `srcset`/`sizes` (cache em `.img-cache/`, fora do git) e embute a menor no preview.
    Para trocar uma foto, substitua o arquivo em `img-originais/` e rode o build. Os 6 cartões de tratamento ainda usam as versões do site (1500 px).
 2. **Textos:** revisão do CFO concluída em 25/11/2026 (ver `COMPLIANCE.md`); marcações `data-pendente` retiradas. Texto novo de benefício ou resultado volta a precisar de revisão e de marcação.
-3. **Fonte Gangitem:** instalada (licença confirmada em 25/11/2026).
+3. **Fonte dos títulos:** decidido, Playfair Display (25/11/2026).
 4. **Dados faltando:** telefone fixo (se houver) e o endereço `/exec` do script de leads (`FORM_ENDPOINT` no `build.py`).
    Links conferidos no site: Política de Privacidade `/privacy-policy/` e Termos `/termos-e-condicoes/`.
 5. **Decisões tomadas** (nov/2026, ver `LEIAME.md`): LP indexável; e-mail opcional; clique no WhatsApp como conversão principal; sem banner de cookies por enquanto.

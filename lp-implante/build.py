@@ -73,10 +73,8 @@ def variants(base, widths):
             seen.add(real); uniq.append((real, f))
     return uniq
 
-# Títulos principais: Gangitem (fonte paga, 177Studio). Enquanto o arquivo licenciado não estiver em
-# fonts/gangitem.woff2, o build usa Playfair Display (gratuita, SIL OFL) no lugar. Basta colocar o arquivo.
-GANGITEM = ROOT / "fonts" / "gangitem.woff2"
-TITLE_FONT = ("Gangitem", "gangitem.woff2") if GANGITEM.exists() else ("Playfair Display", "playfair-display-latin-400-normal.woff2")
+# Títulos principais: Playfair Display (gratuita, SIL OFL), escolha da Rayana em 25/11/2026.
+TITLE_FONT = ("Playfair Display", "playfair-display-latin-400-normal.woff2")
 
 # (arquivo em fonts/, família, peso, estilo)
 FONTS = [
@@ -167,8 +165,6 @@ def main():
         for w, f in variants(base, widths):
             shutil.copy(f, DIST / "assets" / "img" / f.name)
     print("ok: preview.html e dist/ gerados")
-    if not GANGITEM.exists():
-        print("aviso: fonts/gangitem.woff2 não encontrado; títulos com Playfair Display (provisória)")
     missing = sorted({base for _, base, *_ in IMG.values() if not original(base)})
     if missing:
         print("faltam as imagens originais em img-originais/ (o dist/ ainda não tem estas):", ", ".join(missing))

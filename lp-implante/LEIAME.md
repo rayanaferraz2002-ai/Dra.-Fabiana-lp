@@ -35,7 +35,7 @@ creme `#FFF5EC`, vinho `#753E3E` e destaque `#C67D74`; Gangitem nos títulos e M
 - **"Quem vai cuidar de você":** foto cheia, sem moldura, com o mesmo degradê (no desktop, ocupa a metade esquerda e se dissolve só na divisão com o texto; bordas de cima e de baixo retas).
 - **Seções intercaladas** em creme, branco e vinho, com cartões arredondados e ícones em rosé, e um botão de agendamento ao fim das seções principais, com a nota "Atendimento particular".
 - **Ordem:** topo → faixa → frase → Tratamentos especializados → Dra. Fabiana → Onde fica o consultório → Indicações → Como funciona → Etapas → Agende (formulário) → Perguntas frequentes → Outros tratamentos → Contato.
-- **"Onde fica o consultório?":** 4 fotos do consultório (hoje `BG_1` a `BG_4` do site) com moldura vinho deslocada, endereço e mapa do Google.
+- **"Onde fica o consultório?":** 4 fotos do consultório (hoje `BG_1` a `BG_4` do site), endereço e mapa do Google.
   O mapa é um `iframe` do Google Maps com `loading="lazy"`: só carrega quando a pessoa chega perto da seção, mas, ao carregar, o Google pode gravar cookies (vale considerar no banner de cookies, ver "Decisões em aberto").
 - **No celular,** "Outros tratamentos" é um carrossel de arrastar para o lado.
 - **Botão de WhatsApp em vinho** (antes era verde), como na referência, que usa a cor da marca. Se preferir o verde do WhatsApp, é uma troca de uma linha (`.btn-wa`).

@@ -16,6 +16,9 @@ SRC, DIST = ROOT / "src", ROOT / "dist"
 SITE = "https://drafabianamarques.com"
 UP = SITE + "/wp-content/uploads/"
 GTM_ID = "GTM-KHCNXTJ3"
+# Endereço do Apps Script que grava os leads na planilha e avisa por e-mail (ver integracoes/COMO-INSTALAR.md).
+# Vazio: o formulário só leva a pessoa ao WhatsApp com as respostas. O preview nunca envia nada.
+FORM_ENDPOINT = ""
 
 # chave: (URL atual no site, nome-base do original em img-originais/, larguras geradas, atributo sizes)
 # Se existir img-originais/<nome-base>.(jpg|jpeg|png|webp), o build gera <nome-base>-<largura>.webp em
@@ -118,6 +121,7 @@ def render(tpl: str, *, preview: bool, fontprefix: str, only_fonts=None) -> str:
     s = s.replace("{{GTM_BODY}}", "" if preview else GTM_BODY)
     s = s.replace("{{GTM_NOSCRIPT_NOTE}}", "")
     s = s.replace("{{PREVIEW}}", "true" if preview else "false")
+    s = s.replace("{{ENDPOINT}}", "" if preview else FORM_ENDPOINT)
     s = s.replace("{{CANONICAL}}", SITE + "/implantodontia-lp/")
     s = s.replace("{{URL_OBRIGADO}}", "/obrigado/")
     s = s.replace("{{URL_PRIVACIDADE}}", SITE + "/politica-de-privacidade/")   # CONFIRMAR a URL real

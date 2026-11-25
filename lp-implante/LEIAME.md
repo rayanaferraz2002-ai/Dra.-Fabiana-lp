@@ -57,7 +57,8 @@ Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Tr
 6. **WhatsApp e telefone.** Usei o WhatsApp Business da clínica (11 94824-6888) para os dois. Confirmar se há um telefone fixo.
 7. **Destino do formulário** (planilha do Google + e-mail, via Apps Script). Hoje, depois do envio, a pessoa vai para a página de obrigado
    (que conta a conversão) e o WhatsApp abre com as respostas dela, então nenhum lead se perde; falta só o registro na planilha e o aviso por e-mail.
-   Precisa: o e-mail que recebe os avisos e a conta Google dona da planilha.
+   Script e roteiro prontos em `integracoes/` (avisos para dra.fabiana.s.orto@gmail.com, planilha na conta do consultório).
+   Falta o consultório instalar (`integracoes/COMO-INSTALAR.md`) e mandar o endereço `/exec`, que entra em `FORM_ENDPOINT` no `build.py`.
 
 ## Decisões em aberto
 

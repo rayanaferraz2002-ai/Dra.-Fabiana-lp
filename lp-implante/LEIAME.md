@@ -67,7 +67,7 @@ Também corrigi erros de texto: "Extracções", "Golpes ou acidentes" (virou "Tr
 - **Página de obrigado:** fica em `/implantodontia-lp/obrigado/`, dentro da pasta da LP. O `/obrigado/` do WordPress continua como está.
 - **Crédito da agência no rodapé:** sem crédito por enquanto.
 
-## Rastreamento (atenção antes de publicar)
+## Rastreamento (atenção antes de publicar; passo a passo em `integracoes/GTM.md`)
 
 A página atual carrega tudo pelo Google Tag Manager `GTM-KHCNXTJ3`: GA4 `G-ZD1WSSR2J8`, Google Ads `AW-17925773615` e `AW-17878631107`, Meta Pixel `1599263088187252` e Microsoft Clarity `vdam6fv0c2`.
 A nova página usa o mesmo contêiner. **Os acionadores do GTM que dependiam do Elementor (envio de formulário, pop-up, página de obrigado) precisam ser refeitos**, senão o Google Ads pode parar de contar conversões.
